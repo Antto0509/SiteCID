@@ -1,6 +1,6 @@
-*{
+* {
     font-family: 'Glacial Indifference Regular', Arial, sans-serif;
-    background-color: #EEEEEE;
+    /*background-color: #EEEEEE;*/
 }
 
 @font-face {
@@ -10,23 +10,51 @@
      
 .en-tete {
     display: flex;
-    justify-content: space-between; /* Pour répartir les éléments sur toute la largeur de l'en-tête */
-    align-items: center; /* Pour aligner les éléments verticalement au centre */
+    justify-content: space-between;
+    align-items: center;
     background-color: #053B50;
-    padding: 10px; /* Ajoute un peu de marge intérieure pour l'espace autour des éléments */
+    padding: 10px;
 }
 
-.logo {
-    width: 50px; /* Ajustez la largeur du logo */
-    height: 50px; /* Ajustez la hauteur du logo */
+.logo,
+.hamburger,
+.search,
+.clear,
+.mail,
+.compte {
+    width: 50px;
+    height: 50px;
 }
 
 .hamburger {
     cursor: pointer;
+    color: #EEEE;
 }
 
-#search,
-#clear,
-img {
-    margin-left: 10px; /* Ajoute un peu d'espace entre les éléments */
+.search-container {
+    display: flex;
+    align-items: center;
 }
+
+.btn-search,
+.btn-clear,
+.btn-mail,
+.btn-compte {
+    background-color: transparent;
+    border: none;
+}
+
+.btn-search,
+.btn-clear {
+    background-color: #053B50;
+}
+
+.search,
+.clear {
+    margin: 0 10px; /* Ajoute de l'espace entre la loupe et l'effacement */
+}
+
+.site-search {
+    width: 200px; /* Ajustez la largeur de la barre de recherche selon vos besoins */
+}
+

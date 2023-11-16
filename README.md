@@ -2,7 +2,8 @@
 
 ## Groupe 9 :
 * Antoine COUTREEL (G2) 
-* Quentin DESMARQUET (G1) 
+* Quentin DESMARQUET (G1)
+* Thomas FOREY (G1)
+* Akshaiy GANESH (G2)
 * Antoine PISSON (G2) 
 * Luc REGNAUT (G1) 
-* Akshaiy GANESH (G2)

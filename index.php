@@ -10,11 +10,15 @@
     <header class="en-tete">
         <img class="logo" src="assets/imgs/logo.png" alt="">
         <div class="hamburger">&#9776;</div>
-        <img id="search" src="assets/imgs/loupe.png" alt="Loupe">
-        <input type="search" id="site-search" name="Rechercher..."/>
-        <img id="clear" src="assets/imgs/croix.png" alt="Effacer">
-        <img src="assets/imgs/mail.png" alt="">
-        <img src="assets/imgs/compte.png" alt="">
+
+        <div class="search-container">
+            <button class="btn-search"><img class="search" src="assets/imgs/loupe.png" alt="Loupe"></button>
+            <input type="search" class="site-search" name="Rechercher..."/>
+            <button class="btn-clear"><img class="clear" src="assets/imgs/croix.png" alt="Effacer"></button>
+        </div>
+
+        <button class="btn-mail"><img class="mail" src="assets/imgs/mail.png" alt=""></button>
+        <button class="btn-compte"><img class="compte" src="assets/imgs/compte.png" alt=""></button>
     </header>
     <h2>Présentation</h2>
     <div>

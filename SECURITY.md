@@ -1,6 +1,6 @@
-Politique de sécurité
+# Politique de sécurité
 
-Versions prises en charge
+## Versions prises en charge
 
 Utilisez cette section pour informer les personnes des versions de votre projet actuellement prises en charge avec des mises à jour de sécurité.
 
@@ -11,7 +11,7 @@ Utilisez cette section pour informer les personnes des versions de votre projet 
 | 4.0.x   | :white_check_mark: |
 | < 4.0   | :x:                |
 
-Signalement d'une vulnérabilité
+## Signalement d'une vulnérabilité
 
 Utilisez cette section pour indiquer aux personnes comment signaler une vulnérabilité.
 

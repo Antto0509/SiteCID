@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <head>
-        <img src="assets/imgs/logo.png" alt="">
+    <header class='en-tete'>
+        <img class='logo' src="assets/imgs/logo.png" alt="">
         <div class='hamburger'>&#9776;</div>
-        <img id="search-icon" src="assets/imgs/loupe.png" alt="Loupe">
+        <img id="search" src="assets/imgs/loupe.png" alt="Loupe">
         <input type="search" id="site-search" name="Rechercher..."/>
-        <img id="clear-icon" src="assets/imgs/croix.png" alt="Effacer">
+        <img id="clear" src="assets/imgs/croix.png" alt="Effacer">
         <img src="assets/imgs/mail.png" alt="">
         <img src="assets/imgs/compte.png" alt="">
-    </head>
+    </header>
     <h2>Présentation</h2>
     <div>
         <h3>Mot du président :</h3>

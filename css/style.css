@@ -1,0 +1,9 @@
+*{
+    font-family: 'Glacial Indifference Regular', Arial, sans-serif;
+}
+
+@font-face {
+    font-family: 'Glacial Indifference Regular';
+    src: url('assets/police/ClacialIndifference-Regular.otf') format('truetype');
+}
+                                                

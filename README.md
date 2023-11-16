@@ -7,7 +7,7 @@ mise en sommeil pendant quelques années. Cette association est localisé à l�
 DE TECHNOLOGIE.
 
 Son but est de maintenir un contact entre les anciens étudiants ayant fait leurs études du département
-informatique de l’IUT d’Amiens, et cela depuis l’origine en 1989
+informatique de l’IUT d’Amiens, et cela depuis l’origine en 1989.
 
 ## Le besoin : 
 L’association ne possède pas de site WEB, à l’heure actuelle, et le but serait de faire un site vitrine

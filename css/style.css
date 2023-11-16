@@ -1,12 +1,32 @@
 *{
     font-family: 'Glacial Indifference Regular', Arial, sans-serif;
+    background-color: #EEEEEE;
 }
 
 @font-face {
     font-family: 'Glacial Indifference Regular';
     src: url('assets/police/ClacialIndifference-Regular.otf') format('truetype');
 }
-          
-.hamburger{
-    cursor:pointer;
+     
+.en-tete {
+    display: flex;
+    justify-content: space-between; /* Pour répartir les éléments sur toute la largeur de l'en-tête */
+    align-items: center; /* Pour aligner les éléments verticalement au centre */
+    background-color: #053B50;
+    padding: 10px; /* Ajoute un peu de marge intérieure pour l'espace autour des éléments */
+}
+
+.logo {
+    width: 50px; /* Ajustez la largeur du logo */
+    height: 50px; /* Ajustez la hauteur du logo */
+}
+
+.hamburger {
+    cursor: pointer;
+}
+
+#search,
+#clear,
+img {
+    margin-left: 10px; /* Ajoute un peu d'espace entre les éléments */
 }

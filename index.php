@@ -6,6 +6,8 @@
     <title>Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
-    
+    <head>
+        <img src="assets/imgs/logo.png" alt="">
+    </head>
 </body>
 </html>

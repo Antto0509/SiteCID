@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class='en-tete'>
-        <img class='logo' src="assets/imgs/logo.png" alt="">
-        <div class='hamburger'>&#9776;</div>
+    <header class="en-tete">
+        <img class="logo" src="assets/imgs/logo.png" alt="">
+        <div class="hamburger">&#9776;</div>
         <img id="search" src="assets/imgs/loupe.png" alt="Loupe">
         <input type="search" id="site-search" name="Rechercher..."/>
         <img id="clear" src="assets/imgs/croix.png" alt="Effacer">

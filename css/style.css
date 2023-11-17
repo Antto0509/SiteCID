@@ -18,8 +18,6 @@
 
 .logo,
 .hamburger,
-.search,
-.clear,
 .mail,
 .compte {
     width: 50px;
@@ -31,30 +29,18 @@
     color: #EEEE;
 }
 
-.search-container {
-    display: flex;
-    align-items: center;
-}
-
-.btn-search,
-.btn-clear,
 .btn-mail,
 .btn-compte {
     background-color: transparent;
     border: none;
 }
 
-.btn-search,
-.btn-clear {
-    background-color: #053B50;
-}
 
-.search,
-.clear {
-    margin: 0 10px; /* Ajoute de l'espace entre la loupe et l'effacement */
-}
+.search { position: relative; }
+.search input[type="text"] { position: absolute; left: 0; width: 100%; }
+.search button[type="submit"] { position: absolute; right: -4px; }
 
-.site-search {
-    width: 200px; /* Ajustez la largeur de la barre de recherche selon vos besoins */
+.loupe {
+    border: none;
+    background-color: rgba(255,255,255,0);
 }
-

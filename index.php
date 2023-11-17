@@ -11,11 +11,10 @@
         <img class="logo" src="assets/imgs/logo.png" alt="">
         <div class="hamburger">&#9776;</div>
 
-        <div class="search-container">
-            <button class="btn-search"><img class="search" src="assets/imgs/loupe.png" alt="Loupe"></button>
-            <input type="search" class="site-search" name="Rechercher..."/>
-            <button class="btn-clear"><img class="clear" src="assets/imgs/croix.png" alt="Effacer"></button>
-        </div>
+        <form class="search" method="GET" action="">
+            <input type="text" placeholder="Rechercher">
+            <button class="loupe" type="submit"><span class="loupe" type="submit"></span></button>
+        </form>
 
         <button class="btn-mail"><img class="mail" src="assets/imgs/mail.png" alt=""></button>
         <button class="btn-compte"><img class="compte" src="assets/imgs/compte.png" alt=""></button>
@@ -33,3 +32,4 @@
     </div>
 </body>
 </html>
+

@@ -31,9 +31,55 @@ header {
     height: 50px;
 }
 
-.hamburger {
-    cursor: pointer;
+/* Sidenav menu */
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -250px;
+    background-color: #053B50;
+    padding-top: 60px;
+    transition: left 0.5s ease;
+}
+  
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
     color: #EEEE;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidenav a:hover {
+    color: #111;
+}
+  
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.sidenav.active {
+    left: 0;
+}
+  
+.sidenav .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+.burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: #EEEE;
+    margin: 6px 0;
 }
 
 .btn-mail,

@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="en-tete">
+    <header>
         <img class="logo" src="assets/imgs/logo.png" alt="">
         <div class="hamburger">&#9776;</div>
 
-        <form class="search" method="GET" action="">
-            <input type="text" placeholder="Rechercher">
-            <button class="loupe" type="submit"><span class="loupe" type="submit"></span></button>
+        <form action="" class="search-bar">
+            <input type="search" name="search" required autocomplete="off">
+            <button class="searsh-button" typez="submit">
+                <span>Search</span>
+            </button>
         </form>
 
         <button class="btn-mail"><img class="mail" src="assets/imgs/mail.png" alt=""></button>

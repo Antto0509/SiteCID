@@ -9,11 +9,33 @@
 <body>
     <header>
         <img class="logo" src="assets/imgs/logo.png" alt="">
-        <div class="hamburger">&#9776;</div>
+
+        <?php
+        $menuVisible = isset($_GET['menu']) && $_GET['menu'] == 'open';
+        ?>
+        
+        <div class="sidenav <?php echo $menuVisible ? 'active' : ''; ?>">
+        <a id="closeBtn" href="?menu=close" class="close">×</a>
+            <ul>
+                <li><a href="#">A propos</a></li>
+                <li><a href="#">Nos services</a></li>
+                <li><a href="#">Témoignages</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <a href="?menu=open" id="openBtn">
+            <span class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </a>
+
 
         <form action="" class="search-bar">
             <input type="search" name="search" required autocomplete="off">
-            <button class="searsh-button" typez="submit">
+            <button class="searsh-button" type="submit">
                 <span>Search</span>
             </button>
         </form>

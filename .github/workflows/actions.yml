@@ -1,0 +1,31 @@
+name: Actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Build
+        run: make build  # Remplacez cette ligne par la commande de build de notre projet
+
+      - name: Run tests
+        run: make test  # Remplacez cette ligne par la commande pour exécuter nos tests unitaires
+
+      - name: Lint
+        run: make lint  # Remplacez cette ligne par la commande pour lancer notre linter

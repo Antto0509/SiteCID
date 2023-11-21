@@ -37,3 +37,10 @@ jobs:
 
     # - name: Run test suite
     #   run: composer run-script test
+
+    - name: Debugging Composer Validation
+    run: |
+      composer validate --strict
+      echo "Debugging information..."
+    # Ajoutez d'autres commandes ou impressions utiles ici
+

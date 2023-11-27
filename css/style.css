@@ -258,3 +258,8 @@ h1{
     width: 770px;
     padding: 20px;
 }
+
+footer {
+    background-color: #053B50;
+    color : #EEEEEE;
+}

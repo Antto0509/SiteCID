@@ -32,7 +32,6 @@
             </span>
         </a>
 
-
         <form action="" class="search-bar">
             <input type="search" name="search" required autocomplete="off">
             <button class="searsh-button" type="submit">

@@ -62,6 +62,18 @@
             <p>Secrétaire</p>
         </div>
     </div>
+
+    <h1>Annonces des étudiants</h1>
+    <button>Ajouter un événement</button>
+
+    <footer>
+        <div>
+            <p>Nous contacter :</p>
+        </div>
+        <div>
+            <p>Informations :</p>
+        </div>
+    </footer>
 </body>
 </html>
 

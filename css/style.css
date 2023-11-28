@@ -236,6 +236,11 @@ h1{
     padding: 30px;
 }
 
+p {
+    margin: 15px;
+    line-height: 0.70cm;
+}
+
 .box-prez {
     display: flex;
     justify-content: center;
@@ -280,12 +285,26 @@ footer {
     padding: 20px;
 }
 
-.tel-foot {
+.contact-foot {
+    margin: 15px;
+}
+
+.tel-foot{
+    position: relative;
+    z-index: 2;
+}
+
+.mail-foot {
+    position: relative;
+    z-index: 1;
+}
+
+.img-tel-foot {
     height: 40px;
     width: 40px;
 }
 
-.mail-foot {
+.img-mail-foot {
     height: 40px;
     width: 60px;
 }

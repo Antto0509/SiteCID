@@ -289,3 +289,13 @@ footer {
     height: 40px;
     width: 60px;
 }
+
+a {
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #176B87;
+}

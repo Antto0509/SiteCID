@@ -10,6 +10,9 @@ install:
 .PHONY: build
 build: install
 
+.PHONY: lint
+lint: install
+
 .PHONY: clean
 clean:
 	# Commandes pour nettoyer les artefacts de build

@@ -45,7 +45,7 @@
 
     <h1>Présentation</h1>
     <div class="box-prez">
-        <div class="col1">
+        <div class="col1-prez">
             <h2>Mot du président :</h2>
             <p>Loremp ipsum</p>
             <p>Je suis [Nom et Prénom], le/la Président.e de l'association du Cercle des Informaticiens Dispersés (CID). Lorem ipsum dolor sit amet, 
@@ -55,11 +55,11 @@
             <p>Lorem ipsum</p>
             <p>Lorem ipsum</p>
         </div>
-        <div class="col2">
+        <div class="col2-prez">
             <img src="" alt="">
             <p>Président</p>
-            <img src="" alt="">
             <p>Secrétaire</p>
+            <img src="" alt="">
         </div>
     </div>
 
@@ -67,11 +67,18 @@
     <button>Ajouter un événement</button>
 
     <footer>
-        <div>
-            <p>Nous contacter :</p>
+        <div class="col1-foot">
+            <h3>Nous contacter :</h3>
+            <img class="tel-foot" src="assets/imgs/tel.png" alt="">
+            <a href="tel:0123456789">01.23.45.67.89</a>
+            <img class="mail-foot" src="assets/imgs/mail.png" alt="">
+            <a href="notre-mail@gmail.com">notre-mail@gmail.com</a>
         </div>
-        <div>
-            <p>Informations :</p>
+        <div class="col2-foot">
+            <h3>Informations :</h3>
+            <p>Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
+            <p>Date de création : 04/07/1995</p>
+            <p>Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
         </div>
     </footer>
 </body>

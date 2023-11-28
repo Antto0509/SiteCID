@@ -10,6 +10,9 @@ install:
 .PHONY: build
 build: install
 
+.PHONY: test
+test: install
+
 .PHONY: lint
 lint: install
 

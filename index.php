@@ -72,7 +72,7 @@
             <img class="tel-foot" src="assets/imgs/tel.png" alt="">
             <a href="tel:0123456789">01.23.45.67.89</a>
             <img class="mail-foot" src="assets/imgs/mail.png" alt="">
-            <a href="notre-mail@gmail.com">notre-mail@gmail.com</a>
+            <a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a>
         </div>
         <div class="col2-foot">
             <h3>Informations :</h3>

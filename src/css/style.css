@@ -267,10 +267,10 @@ p {
 footer {
     background-color: #053B50;
     color : #EEEEEE;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-content: space-between;
-    height: 200px;
+    height: auto;
 }
 
 .col1-foot {
@@ -287,16 +287,7 @@ footer {
 
 .contact-foot {
     margin: 15px;
-}
-
-.tel-foot{
-    position: relative;
-    z-index: 2;
-}
-
-.mail-foot {
-    position: relative;
-    z-index: 1;
+    line-height: 0.8cm;
 }
 
 .img-tel-foot {
@@ -309,9 +300,16 @@ footer {
     width: 60px;
 }
 
+.contact-foot a img {
+    height: 40px;
+    width: 40px;
+}
+
 a {
     text-decoration: none;
     color: #EEEEEE;
+    margin: 15px;
+    line-height: 0.70cm;
 }
 
 a:hover {

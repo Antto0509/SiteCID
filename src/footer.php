@@ -32,9 +32,9 @@
         <p>Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
         <p>Date de création : 04/07/1995</p>
         <a href="">Qui sommes-nous ?</a>
+        <a href="">Nos membres</a>
         <a href="">Mentions légales</a>
         <a href="">Informations personnelles</a>
-        <a href=""></a>
     </div>
 </footer>
 </body>

@@ -10,21 +10,31 @@
     <div class="col1-foot">
         <h3>Nous contacter :</h3>
         <div class="contact-foot">
-            <div class="tel-foot">
-                <img class="img-tel-foot" src="assets/imgs/tel.png" alt="">
-                <a href="tel:0123456789">01.23.45.67.89</a>
-            </div>
-            <div class="mail-foot">
-                <img class="img-mail-foot" src="assets/imgs/mail.png" alt="">
-                <a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a>
-            </div>
+            <table>
+                <tr>
+                    <td align="center"><img class="img-tel-foot" src="assets/imgs/tel.png" alt=""></td>
+                    <td><a href="tel:0123456789">01.23.45.67.89</a></td>
+                </tr>
+                <tr>
+                    <td align="center"><img class="img-mail-foot" src="assets/imgs/mail.png" alt=""></td>
+                    <td><a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a></td>
+                </tr>
+            </table>
+            <a href=""><img src="assets/imgs/LinkedIn.png" alt=""></a>
+            <a href=""><img src="assets/imgs/Instagram.png" alt=""></a>
+            <a href=""><img src="assets/imgs/facebook.png" alt=""></a>
+            <a href=""><img src="assets/imgs/twitter.png" alt=""></a>
         </div>
     </div>
     <div class="col2-foot">
         <h3>Informations :</h3>
+        <p>Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
         <p>Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
         <p>Date de création : 04/07/1995</p>
-        <p>Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
+        <a href="">Qui sommes-nous ?</a>
+        <a href="">Mentions légales</a>
+        <a href="">Informations personnelles</a>
+        <a href=""></a>
     </div>
 </footer>
 </body>

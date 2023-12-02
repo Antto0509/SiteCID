@@ -23,7 +23,7 @@
         </ul>
     </div>
 
-    <a href="?menu=open" id="openBtn">
+    <a href="?menu=open" class="openBtn">
             <span class="burger-icon">
                 <span></span>
                 <span></span>
@@ -31,14 +31,11 @@
             </span>
     </a>
 
-    <form action="" class="search-bar">
-        <input type="search" name="search" required autocomplete="off">
-        <button class="searsh-button" type="submit">
-            <span>Search</span>
-        </button>
+    <form class="search__container">
+        <input class="search__input" type="text" placeholder="Rechercher un évènement, une personne...">
     </form>
 
-    <button class="btn-mail"><img class="mail" src="../assets/imgs/mail.png" alt=""></button>
+    <a href="" class="btn-mail"><img class="mail" src="../assets/imgs/mail.png" alt=""></a> 
     <a href="login.php" class="btn-compte"><img class="compte" src="../assets/imgs/compte.png" alt=""></a>
 </header>
 </body>

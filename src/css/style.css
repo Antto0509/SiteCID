@@ -1,3 +1,5 @@
+/* Général */
+
 @font-face {
     font-family: 'Glacial Indifference Regular';
     src: url('assets/police/ClacialIndifference-Regular.otf') format('truetype');
@@ -10,6 +12,29 @@
     margin: 0;
     padding: 0;
 }
+
+a {
+    text-decoration: none;
+    color: #EEEEEE;
+    margin: 15px;
+    line-height: 0.70cm;
+}
+
+a:hover {
+    color: #176B87;
+}
+
+h1{
+    color: #053B50;
+    padding: 30px;
+}
+
+p {
+    margin: 15px;
+    line-height: 0.70cm;
+}
+
+/* Header */
      
 header {
     display: flex;
@@ -31,7 +56,9 @@ header {
     height: 50px;
 }
 
-/* Sidenav menu */
+
+/* Menu */
+
 .sidenav {
     height: 100%;
     width: 250px;
@@ -88,6 +115,9 @@ header {
     background-color: transparent;
     border: none;
 }
+
+
+/* Barre de recherche */
 
 button,
 input {
@@ -231,38 +261,8 @@ input[type="search"]::-webkit-search-cancel-button {
     transform: translateY(1px);
 }
 
-h1{
-    color: #053B50;
-    padding: 30px;
-}
 
-p {
-    margin: 15px;
-    line-height: 0.70cm;
-}
-
-.box-prez {
-    display: flex;
-    justify-content: center;
-    align-content: space-between;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
-}
-
-.col1-prez {
-    background-color: #176B87;
-    color : #EEEEEE;
-    height: auto;
-    width: 768px;
-    padding: 20px;
-}
-
-.col2-prez {
-    background-color: #053B50;
-    color : #EEEEEE;
-    height: auto;
-    width: 768px;
-    padding: 20px;
-}
+/* Footer */
 
 footer {
     background-color: #053B50;
@@ -305,13 +305,28 @@ footer {
     width: 40px;
 }
 
-a {
-    text-decoration: none;
-    color: #EEEEEE;
-    margin: 15px;
-    line-height: 0.70cm;
+
+/* Accueil */
+
+.box-prez {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-a:hover {
-    color: #176B87;
+.col1-prez {
+    background-color: #176B87;
+    color : #EEEEEE;
+    height: auto;
+    width: 768px;
+    padding: 20px;
+}
+
+.col2-prez {
+    background-color: #053B50;
+    color : #EEEEEE;
+    height: auto;
+    width: 768px;
+    padding: 20px;
 }

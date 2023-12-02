@@ -20,10 +20,10 @@
                     <td><a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a></td>
                 </tr>
             </table>
-            <a href=""><img src="assets/imgs/LinkedIn.png" alt=""></a>
-            <a href=""><img src="assets/imgs/Instagram.png" alt=""></a>
-            <a href=""><img src="assets/imgs/facebook.png" alt=""></a>
-            <a href=""><img src="assets/imgs/twitter.png" alt=""></a>
+            <a href="https://www.linkedin.com/" target="_blank"><img src="assets/imgs/LinkedIn.png" alt=""></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="assets/imgs/Instagram.png" alt=""></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="assets/imgs/facebook.png" alt=""></a>
+            <a href="https://twitter.com/" target="_blank"><img src="assets/imgs/twitter.png" alt=""></a>
         </div>
     </div>
     <div class="col2-foot">
@@ -31,7 +31,7 @@
         <p>Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
         <p>Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
         <p>Date de création : 04/07/1995</p>
-        <a href="">Qui sommes-nous ?</a>
+        <a href="">A propos</a>
         <a href="">Nos membres</a>
         <a href="">Mentions légales</a>
         <a href="">Informations personnelles</a>

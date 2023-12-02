@@ -13,7 +13,7 @@
      
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background-color: #053B50;
     padding: 10px;
@@ -313,6 +313,5 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
     color: #176B87;
 }

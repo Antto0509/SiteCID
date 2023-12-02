@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <img class="logo" src="assets/imgs/logo.png" alt="">
+    <a href="index.php"><img class="logo" src="assets/imgs/logo.png" alt=""></a>
 
     <?php
     $menuVisible = isset($_GET['menu']) && $_GET['menu'] == 'open';

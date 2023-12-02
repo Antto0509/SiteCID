@@ -32,6 +32,7 @@ h1{
 p {
     margin: 15px;
     line-height: 0.70cm;
+    text-align: justify;
 }
 
 /* Header */

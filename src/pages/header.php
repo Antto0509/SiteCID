@@ -24,11 +24,11 @@
     </div>
 
     <a href="?menu=open" class="openBtn">
-            <span class="burger-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
+        <span class="burger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
     </a>
 
     <form class="search__container">

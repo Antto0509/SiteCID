@@ -1,0 +1,94 @@
+
+/* conteneur de connexion */
+.conteneur-connexion {
+    max-width: 400px;
+    margin: 50px auto 50px auto;
+    text-align: center;
+}
+
+/* titre de connexion */
+.titre-connexion {
+    background-color: #64CCC5;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* saisie des informations de connexion */
+.saisie-infos-connexion {
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* groupe d'entrée */
+.saisie-infos-connexion form .groupe-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer les éléments horizontalement */
+}
+
+/* étiquette du formulaire */
+.saisie-infos-connexion form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* entrée du formulaire */
+.saisie-infos-connexion form input {
+    width: calc(100% - 16px); /* Ajuster la largeur avec un peu d'espace sur les côtés */
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* texte "Mot de passe oublié" */
+.saisie-infos-connexion form .mot-de-passe-oubli{
+    font-size: 12px;
+    color: #000000;
+    float: right;
+    text-decoration: none;
+}
+
+/* bouton de formulaire */
+.saisie-infos-connexion form button {
+    width: 100%;
+    padding: 12px; /* Ajuster la taille du bouton */
+    background-color: #64CCC5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* changement de couleur au survol du bouton */
+.saisie-infos-connexion form button:hover {
+    background-color: #4aafa9;
+}
+
+/* texte de connexion */
+.texte-connexion {
+    margin-top: 10px;
+}
+
+/* paragraphe du texte de connexion */
+.texte-connexion p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* lien du texte de connexion */
+.texte-connexion a {
+    color: #176B87;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* changement de style au survol du lien du texte de connexion */
+.texte-connexion a:hover {
+    text-decoration: underline;
+}

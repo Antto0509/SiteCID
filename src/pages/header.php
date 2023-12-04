@@ -35,8 +35,10 @@
         <input class="search__input" type="text" placeholder="Rechercher un évènement, une personne...">
     </form>
 
-    <a href="" class="btn-mail"><img class="mail" src="../assets/imgs/mail.png" alt=""></a> 
-    <a href="login.php" class="btn-compte"><img class="compte" src="../assets/imgs/compte.png" alt=""></a>
+    <div class="header-right">
+        <a href="" class="btn-mail"><img class="mail" src="../assets/imgs/mail.png" alt=""></a> 
+        <a href="login.php" class="btn-compte"><img class="compte" src="../assets/imgs/compte.png" alt=""></a>
+    </div>
 </header>
 </body>
 </html>

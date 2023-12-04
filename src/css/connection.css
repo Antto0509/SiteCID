@@ -28,7 +28,7 @@
 .saisie-infos-connexion form .groupe-input {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer les éléments horizontalement */
+    align-items: center; 
 }
 
 /* étiquette du formulaire */
@@ -39,7 +39,7 @@
 
 /* entrée du formulaire */
 .saisie-infos-connexion form input {
-    width: calc(100% - 16px); /* Ajuster la largeur avec un peu d'espace sur les côtés */
+    width: calc(100% - 16px); 
     padding: 10px;
     margin-bottom: 16px;
     border: 1px solid #ccc;
@@ -57,7 +57,7 @@
 /* bouton de formulaire */
 .saisie-infos-connexion form button {
     width: 100%;
-    padding: 12px; /* Ajuster la taille du bouton */
+    padding: 12px; 
     background-color: #64CCC5;
     color: white;
     border: none;

@@ -7,7 +7,7 @@
     <title>Connexion - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
-    <!-- Page de connexion (identifiants ou e-mail + mdp) -->
+    <!-- Page d'inscription -->
     <?php include "header.php"?>
 
     <?php include "footer.php"?>

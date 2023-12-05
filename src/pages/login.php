@@ -33,7 +33,7 @@
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">
-                <p>Pas de compte ? <a href="#">Créer un compte</a></p>
+                <p>Pas de compte ? <a href="register.php">Créer un compte</a></p>
             </div>
         </section>
     </main>

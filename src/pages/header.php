@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<header>
+<header class="entete">
     <a href="index.php"><img class="logo" src="../assets/imgs/logo.png" alt=""></a>
 
     <?php

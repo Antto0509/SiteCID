@@ -33,7 +33,7 @@ h1{
     padding: 30px;
 }
 
-p {
+.texte {
     margin: 15px;
     line-height: 0.70cm;
     text-align: justify;
@@ -41,13 +41,13 @@ p {
 
 /* Header */
      
-header {
+.entete {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #053B50;
     padding: 10px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
 }
 
 .logo,

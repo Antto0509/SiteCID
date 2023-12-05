@@ -28,9 +28,9 @@
     </div>
     <div class="col2-foot">
         <h3>Informations :</h3>
-        <p>Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
-        <p>Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
-        <p>Date de création : 04/07/1995</p>
+        <p class="texte">Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
+        <p class="texte">Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
+        <p class="texte">Date de création : 04/07/1995</p>
         <a href="">A propos</a>
         <a href="">Nos membres</a>
         <a href="">Mentions légales</a>

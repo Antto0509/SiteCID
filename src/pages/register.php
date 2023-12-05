@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/connection.css">
-    <title>Connexion - Cercle des Informaticiens Dispersés</title>
+    <title>Inscription - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
     <!-- Page d'inscription -->

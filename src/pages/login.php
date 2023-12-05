@@ -28,8 +28,8 @@
                 <div class="groupe-input">
                     <label for="mdp">Mot de passe</label>
                     <input type="password" id="mdp" name="mot_de_passe">
-                    
-                </div>    
+                    <a href="#" class="mot-de-passe-oubli">Mot de passe oublié</a>
+                </div>
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">

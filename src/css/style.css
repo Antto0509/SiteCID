@@ -246,4 +246,36 @@ footer {
     padding: 20px;
 }
 
+/* Événement */
+.event-card {
+    max-width: 600px;
+    margin: 25px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    text-align: center;
+}
 
+.event-card h2 {
+    color: #053B50;
+}
+
+.event-card p {
+    color: #176B87;
+    margin-bottom: 10px;
+}
+
+.event-card button {
+    background-color: #176B87;
+    color: #EEEEEE;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.event-card button:hover {
+    background-color: #053B50;
+}

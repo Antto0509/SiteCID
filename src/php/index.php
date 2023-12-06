@@ -30,7 +30,11 @@
     </div>
 
     <h1>Annonces des étudiants</h1>
-    <button>Ajouter un événement</button>
+    <div class="event-card">
+        <h2>Aucun événement pour le moment</h2>
+        <p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>
+        <a href="event.php"><button>Ajouter un événement</button></a>
+    </div>
 
     <?php include "footer.php"?>
 </body>

@@ -1,3 +1,5 @@
+<?php include "../../includes/pdo.php"?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -1,4 +1,4 @@
-<?php include "../../includes/pdo.php"?>
+<?php //require('../../includes/pdo.php');?>
 
 <!DOCTYPE html>
 <html lang="fr">

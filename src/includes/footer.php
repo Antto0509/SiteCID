@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<!-- footer.php -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/style.css">
+
 <footer>
     <div class="col1-foot">
         <h3>Nous contacter :</h3>
         <div class="contact-foot">
             <table>
                 <tr>
-                    <td align="center"><img class="img-tel-foot" src="../assets/imgs/tel.png" alt=""></td>
+                    <td align="center"><img class="img-tel-foot" src="/SiteCID/SiteCID/src/assets/imgs/tel.png" alt=""></td>
                     <td><a href="tel:0123456789">01.23.45.67.89</a></td>
                 </tr>
                 <tr>
-                    <td align="center"><img class="img-mail-foot" src="../assets/imgs/mail.png" alt=""></td>
+                    <td align="center"><img class="img-mail-foot" src="/SiteCID/SiteCID/src/assets/imgs/mail.png" alt=""></td>
                     <td><a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a></td>
                 </tr>
             </table>
@@ -37,5 +34,3 @@
         <a href="">Informations personnelles</a>
     </div>
 </footer>
-</body>
-</html>

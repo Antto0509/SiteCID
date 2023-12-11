@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Accueil - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
-    <?php include "header.php"?>
+    <?php include "includes/header.php";?>
 
     <h1>Présentation</h1>
     <div class="box-prez">
@@ -24,10 +24,10 @@
             <p class="texte">Nathalie Demazeux</p>
         </div>
         <div class="col2-prez">
-            <img src="" alt="">
+            <img src="https://placehold.co/50x50" alt="">
             <p class="texte">Présidente</p>
             <p class="texte">Secrétaire</p>
-            <img src="" alt="">
+            <img src="https://placehold.co/50x50" alt="">
         </div>
     </div>
 
@@ -35,10 +35,10 @@
     <div class="event-card">
         <h2>Aucun événement pour le moment</h2>
         <p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>
-        <a href="event.php"><button>Ajouter un événement</button></a>
+        <a href="pages/event.php"><button>Ajouter un événement</button></a>
     </div>
 
-    <?php include "footer.php"?>
+    <?php include "includes/footer.php";?>
 </body>
 </html>
 

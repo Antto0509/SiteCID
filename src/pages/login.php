@@ -10,7 +10,8 @@
 </head>
 <body>
     <!-- Page de connexion (identifiants ou e-mail + mdp) -->
-    <?php include "header.php"?>
+    <?php include "../includes/header.php";?>
+
     <main class="conteneur-connexion">
         <header class="titre-connexion">
             <p>Se connecter</p>
@@ -39,7 +40,7 @@
             </div>
         </section>
     </main>
-    <?php include "footer.php"?>
+    <?php include "../includes/footer.php";?>
 </body>
 </html>
 

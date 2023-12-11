@@ -20,10 +20,10 @@
                     <td><a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a></td>
                 </tr>
             </table>
-            <a href="https://www.linkedin.com/" target="_blank"><img src="../assets/imgs/LinkedIn.png" alt=""></a>
-            <a href="https://www.instagram.com/" target="_blank"><img src="../assets/imgs/Instagram.png" alt=""></a>
-            <a href="https://www.facebook.com/" target="_blank"><img src="../assets/imgs/facebook.png" alt=""></a>
-            <a href="https://twitter.com/" target="_blank"><img src="../assets/imgs/twitter.png" alt=""></a>
+            <a href="https://www.linkedin.com/" target="_blank"><img src="/SiteCID/SiteCID/src/assets/imgs/LinkedIn.png" alt=""></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="/SiteCID/SiteCID/src/assets/imgs/Instagram.png" alt=""></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="/SiteCID/SiteCID/src/assets/imgs/facebook.png" alt=""></a>
+            <a href="https://twitter.com/" target="_blank"><img src="/SiteCID/SiteCID/src/assets/imgs/twitter.png" alt=""></a>
         </div>
     </div>
     <div class="col2-foot">

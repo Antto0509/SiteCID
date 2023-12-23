@@ -1,11 +1,13 @@
-<?php require('../../../../includes/pdo.php');?>
+<?php
+include('../parametres/configurations.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/connection.css">
+    <link rel="stylesheet" href="<?php echo URLSITEWEB ?>/css/connection.css">
     <title>Connexion - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
@@ -36,7 +38,7 @@
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">
-                <p>Pas de compte ? <a href="register.php">Créer un compte</a></p>
+                <p>Pas de compte ? <a href="<? echo URLSITEWEB ?>/register.php">Créer un compte</a></p>
             </div>
         </section>
     </main>

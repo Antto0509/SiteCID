@@ -1,4 +1,6 @@
-<?php require('../../../includes/pdo.php');?>
+<?php
+include('parametres/configurations.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,7 +37,7 @@
     <div class="event-card">
         <h2>Aucun événement pour le moment</h2>
         <p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>
-        <a href="pages/event.php"><button>Ajouter un événement</button></a>
+        <a href="<?php echo PAGES_PATH ?>/event.php"><button>Ajouter un événement</button></a>
     </div>
 
     <?php include "includes/footer.php";?>

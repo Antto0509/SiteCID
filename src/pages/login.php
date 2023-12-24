@@ -21,11 +21,6 @@ include('../parametres/configurations.php');
         <section class="saisie-infos-connexion">
             <form action="" method="post">
                 <div class="groupe-input">
-                    <label for="identifiant">Identifiant</label>
-                    <input type="text" id="identifiant" name="adresse_email">
-                </div>
-
-                <div class="groupe-input">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" name="adresse_email">
                 </div>
@@ -38,7 +33,7 @@ include('../parametres/configurations.php');
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">
-                <p>Pas de compte ? <a href="<? echo URLSITEWEB ?>/register.php">Créer un compte</a></p>
+                <p>Pas de compte ? <a href="<?php echo PAGES_PATH ?>/register.php">Créer un compte</a></p>
             </div>
         </section>
     </main>

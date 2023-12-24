@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/connection.css">
+    <script src="../script/js/register.js"></script>
     <title>Inscription - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
@@ -18,6 +19,18 @@
         </header>
         <section class="saisie-infos-connexion">
             <form action="" method="post">
+                <div class="groupe-civilite">
+                    <div class="groupe-input">
+                        <label for="monsieur">M.</label>
+                        <input type="checkbox" id="monsieur" name="monsieur" value="1">
+                    </div>
+
+                    <div class="groupe-input">
+                        <label for="madame">Mme</label>
+                        <input type="checkbox" id="madame" name="madame" value="1">
+                    </div>
+                </div>
+
                 <div class="groupe-input">
                     <label for="nom">Nom</label>
                     <input type="text" id="nom" name="nom">
@@ -29,13 +42,18 @@
                 </div>
 
                 <div class="groupe-input">
-                    <label for="date_naissance">Date de naissance</label>
-                    <input type="date" id="date_naissance" name="date_naissance">
+                    <label for="promotion">Année de promotion</label>
+                    <input type="date" id="promotion" name="promotion">
                 </div>
 
                 <div class="groupe-input">
-                    <label for="identifiant">Identifiant</label>
-                    <input type="text" id="identifiant" name="identifiant">
+                    <label for="emploi">Emploi (facultatif)</label>
+                    <input type="text" id="emploi" name="emploi">
+                </div>
+
+                <div class="groupe-input">
+                    <label for="ville">Ville de résidence (facultatif)</label>
+                    <input type="text" id="ville" name="ville">
                 </div>
 
                 <div class="groupe-input">

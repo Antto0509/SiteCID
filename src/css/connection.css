@@ -25,6 +25,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* groupe des civilités */
+.saisie-infos-connexion form .groupe-civilite {
+    display: flex;
+    justify-content: center;
+}
+
+/* styles pour les cases à cocher liées à la civilité */
+.saisie-infos-connexion form .groupe-civilite .groupe-input {
+    flex-basis: 30%; /* Ajustez la largeur des cases à cocher selon vos besoins */
+}
+
 /* groupe d'entrée */
 .saisie-infos-connexion form .groupe-input {
     display: flex;

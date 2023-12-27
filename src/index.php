@@ -1,5 +1,9 @@
 <?php
-include('parametres/configurations.php');
+include_once('parametres/configurations.php');
+
+// Requête SQL pour récupérer les événements triés par date décroissante
+$sql = "SELECT * FROM Evenement ORDER BY date_evenement DESC";
+$evenements = get_results($sql);
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +37,25 @@ include('parametres/configurations.php');
         </div>
     </div>
 
-    <h1>Annonces des étudiants</h1>
+    <h1>Annonces des événements</h1>
     <div class="event-card">
-        <h2>Aucun événement pour le moment</h2>
-        <p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>
-        <a href="<?php echo PAGES_PATH ?>/event.php"><button>Ajouter un événement</button></a>
+        <?php
+        // Vérifier s'il y a des événements
+        if (count($evenements) > 0) {
+            foreach ($evenements as $evenement) {
+                // Afficher les détails de chaque événement
+                echo "<h2>" . htmlspecialchars($evenement['description_evenement']) . "</h2>";
+                echo "<p>Date : " . htmlspecialchars($evenement['date_evenement']) . "</p>";
+                echo "<p>Adresse : " . htmlspecialchars($evenement['adresse_evenement']) . "</p>";
+                // ... Ajoutez d'autres détails d'événement selon vos besoins
+            }
+        } else {
+            // Aucun événement trouvé
+            echo "<h2>Aucun événement pour le moment</h2>";
+            echo "<p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>";
+            echo "<a href='" . PAGES_PATH . "/event.php'><button>Ajouter un événement</button></a>";
+        }
+        ?>
     </div>
 
     <?php include "includes/footer.php";?>

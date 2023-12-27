@@ -1,4 +1,6 @@
-<?php //require('../../../../includes/pdo.php');?>
+<?php
+include_once('../parametres/configurations.php');
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

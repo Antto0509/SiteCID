@@ -20,6 +20,7 @@
             <li><a href="#">Nos services</a></li>
             <li><a href="#">Témoignages</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a href="infoU.php">information personnel</a></li>
         </ul>
     </div>
 

@@ -14,6 +14,7 @@ $DEBUG_INSERT = false;
 $DEBUG_UPDATE = false;
 $DEBUG_DELETE = false;
 
+// Base de donnée
 $base = 'cid';
 $host = 'localhost';
 $port = '3306';
@@ -159,6 +160,7 @@ function set_delete($table, $values, $return){
     }
 }
 
+// Méthode RSA
 function generateKeyPair($privateKeyPath, $publicKeyPath) {
     $config = array(
         'private_key_bits' => 2048,

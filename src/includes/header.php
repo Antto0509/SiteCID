@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<?php echo URLSITEWEB; ?>/css/style.css">
+
 <header class="entete">
-    <a href="index.php"><img class="logo" src="../assets/imgs/logo.png" alt=""></a>
+    <a href="<?php echo URLSITEWEB; ?>/index.php"><img class="logo" src="<?php echo IMGS_PATH; ?>/logo.png" alt=""></a>
 
     <?php
     $menuVisible = isset($_GET['menu']) && $_GET['menu'] == 'open';
@@ -37,9 +33,7 @@
     </form>
 
     <div class="header-right">
-        <a href="" class="btn-mail"><img class="mail" src="../assets/imgs/mail.png" alt=""></a> 
-        <a href="login.php" class="btn-compte"><img class="compte" src="../assets/imgs/compte.png" alt=""></a>
+        <a href="" class="btn-mail"><img class="mail" src="<?php echo IMGS_PATH; ?>/mail.png" alt=""></a>
+        <a href="<?php echo PAGES_PATH; ?>/login.php" class="btn-compte"><img class="compte" src="<?php echo IMGS_PATH; ?>/compte.png" alt=""></a>
     </div>
 </header>
-</body>
-</html>

@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<?php echo URLSITEWEB; ?>/css/style.css">
+
 <footer>
     <div class="col1-foot">
         <h3>Nous contacter :</h3>
         <div class="contact-foot">
             <table>
                 <tr>
-                    <td align="center"><img class="img-tel-foot" src="../assets/imgs/tel.png" alt=""></td>
+                    <td align="center"><img class="img-tel-foot" src="<?php echo IMGS_PATH; ?>/tel.png" alt=""></td>
                     <td><a href="tel:0123456789">01.23.45.67.89</a></td>
                 </tr>
                 <tr>
-                    <td align="center"><img class="img-mail-foot" src="../assets/imgs/mail.png" alt=""></td>
+                    <td align="center"><img class="img-mail-foot" src="<?php echo IMGS_PATH; ?>/mail.png" alt=""></td>
                     <td><a href="mailto:notre-mail@gmail.com?subject=Sujet du message">notre-mail@gmail.com</a></td>
                 </tr>
             </table>
-            <a href="https://www.linkedin.com/" target="_blank"><img src="../assets/imgs/LinkedIn.png" alt=""></a>
-            <a href="https://www.instagram.com/" target="_blank"><img src="../assets/imgs/Instagram.png" alt=""></a>
-            <a href="https://www.facebook.com/" target="_blank"><img src="../assets/imgs/facebook.png" alt=""></a>
-            <a href="https://twitter.com/" target="_blank"><img src="../assets/imgs/twitter.png" alt=""></a>
+            <a href="https://www.linkedin.com/" target="_blank"><img src="<?php echo IMGS_PATH; ?>/LinkedIn.png" alt=""></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="<?php echo IMGS_PATH; ?>/Instagram.png" alt=""></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="<?php echo IMGS_PATH; ?>/facebook.png" alt=""></a>
+            <a href="https://twitter.com/" target="_blank"><img src="<?php echo IMGS_PATH; ?>/twitter.png" alt=""></a>
         </div>
     </div>
     <div class="col2-foot">
@@ -37,5 +33,3 @@
         <a href="">Informations personnelles</a>
     </div>
 </footer>
-</body>
-</html>

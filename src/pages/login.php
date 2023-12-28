@@ -1,11 +1,30 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
-
 include_once('../parametres/configurations.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['adresse_email'];
+    $password = $_POST['mot_de_passe'];
+
+    // Récupération des informations de l'utilisateur depuis la base de données
+    $user = get_result("SELECT * FROM Utilisateur WHERE email_utilisateur = '$email'");
+
+    if ($user) {
+        // Déchiffrement du mot de passe stocké
+        $decryptedPassword = decryptPassword($user['mdp_utilisateur'], 'private.pem');
+
+        // Vérification du mot de passe
+        if ($password === $decryptedPassword) {
+            // Mot de passe correct, effectuez les actions nécessaires pour la connexion réussie
+            // ...
+
+            // Redirection vers une page de succès ou autre action
+            // header('Location: '.$successPage);
+            exit();
+        }
+    }
+
+    $errorMessage = "Erreur : identifiant ou mot de passe incorrect";
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +60,9 @@ include_once('../parametres/configurations.php');
             <div class="texte-connexion">
                 <p>Pas de compte ? <a href="<?php echo PAGES_PATH ?>/register.php">Créer un compte</a></p>
             </div>
+            <?php if (isset($errorMessage)) : ?>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php endif; ?>
         </section>
     </main>
     <?php include "../includes/footer.php";?>

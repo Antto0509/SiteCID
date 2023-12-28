@@ -44,10 +44,11 @@ $evenements = get_results($sql);
         if (count($evenements) > 0) {
             foreach ($evenements as $evenement) {
                 // Afficher les détails de chaque événement
-                echo "<h2>" . htmlspecialchars($evenement['description_evenement']) . "</h2>";
+                echo "<h2>" . htmlspecialchars($evenement['titre_evenement']) . "</h2>";
+                echo "<p>" . htmlspecialchars($evenement['description_evenement']) . "</p>";
                 echo "<p>Date : " . htmlspecialchars($evenement['date_evenement']) . "</p>";
                 echo "<p>Adresse : " . htmlspecialchars($evenement['adresse_evenement']) . "</p>";
-                // ... Ajoutez d'autres détails d'événement selon vos besoins
+                // ... Ajoutez d'autres détails d'événement selon nos besoins
             }
         } else {
             // Aucun événement trouvé

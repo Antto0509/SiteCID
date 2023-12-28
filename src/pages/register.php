@@ -1,5 +1,55 @@
 <?php
 include_once('../parametres/configurations.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération des données du formulaire
+    $civiliteMonsieur = isset($_POST['monsieur']) ? $_POST['monsieur'] : false;
+    $civiliteMadame = isset($_POST['madame']) ? $_POST['madame'] : false;
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $promotion = $_POST['promotion'];
+    $emploi = $_POST['emploi'];
+    $ville = $_POST['ville'];
+    $email = $_POST['adresse_email'];
+    $password = $_POST['mot_de_passe'];
+    $confPassword = $_POST['conf_mot_de_passe'];
+    $politiqueConfidentialite = isset($_POST['politique_confidentialite']) ? $_POST['politique_confidentialite'] : false;
+
+    // Validation des données (ajoutez votre propre logique de validation)
+
+    // Vérification du mot de passe et de sa confirmation
+    if ($password !== $confPassword) {
+        $errorMessage = "Erreur : les mots de passe ne correspondent pas.";
+    } elseif (!$politiqueConfidentialite) {
+        $errorMessage = "Erreur : veuillez adhérer à la politique de confidentialité.";
+    } else {
+        // Chiffrer le mot de passe avant de le stocker dans la base de données
+        $encryptedPassword = encryptPassword($password, 'public.pem');
+
+        // Insérer les données dans la base de données
+        $insertValues = array(
+            'nom_utilisateur' => $nom,
+            'prenom_utilisateur' => $prenom,
+            'email_utilisateur' => $email,
+            'mdp_utilisateur' => $encryptedPassword,
+            'date_naissance_utilisateur' => $promotion,
+            'emploi_utilisateur' => $emploi,
+            'id_adresse' => null, // Remplacez par la valeur appropriée
+            'id_genre' => null, // Remplacez par la valeur appropriée
+            'id_promotion' => null, // Remplacez par la valeur appropriée
+            'id_role' => null // Remplacez par la valeur appropriée
+        );
+
+        if (set_insert('Utilisateur', $insertValues, 1)) {
+            // Inscription réussie, redirigez vers une page de succès ou autre action
+            // header('Location: '.$successPage);
+            exit();
+        } else {
+            // Erreur lors de l'insertion dans la base de données
+            $errorMessage = "Erreur : problème lors de l'inscription.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +74,12 @@ include_once('../parametres/configurations.php');
                 <div class="groupe-civilite">
                     <div class="groupe-input">
                         <label for="monsieur">M.</label>
-                        <input type="checkbox" id="monsieur" name="monsieur" value="1">
+                        <input type="checkbox" id="monsieur" name="monsieur">
                     </div>
 
                     <div class="groupe-input">
                         <label for="madame">Mme</label>
-                        <input type="checkbox" id="madame" name="madame" value="1">
+                        <input type="checkbox" id="madame" name="madame">
                     </div>
                 </div>
 
@@ -82,6 +132,9 @@ include_once('../parametres/configurations.php');
             <div class="texte-connexion">
                 <p>Vous avez déjà un compte ? <a href="login.php">Se connecter</a></p>
             </div>
+            <?php if (isset($errorMessage)) : ?>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
+            <?php endif; ?>
         </section>
     </main>
     

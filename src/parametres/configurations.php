@@ -158,4 +158,48 @@ function set_delete($table, $values, $return){
         $q->execute();
     }
 }
+
+function generateKeyPair($privateKeyPath, $publicKeyPath) {
+    $config = array(
+        'private_key_bits' => 2048,
+        'private_key_type' => OPENSSL_KEYTYPE_RSA,
+    );
+
+    // Générer la paire de clés
+    $res = openssl_pkey_new($config);
+
+    // Extraire la clé privée
+    openssl_pkey_export($res, $privateKey);
+    file_put_contents($privateKeyPath, $privateKey);
+
+    // Extraire la clé publique
+    $publicKeyDetails = openssl_pkey_get_details($res);
+    $publicKey = $publicKeyDetails['key'];
+    file_put_contents($publicKeyPath, $publicKey);
+
+    return array(
+        'private_key' => $privateKey,
+        'public_key' => $publicKey,
+    );
+}
+
+// Génération des clés si elles n'existent pas déjà
+$privateKeyPath = 'private.pem';
+$publicKeyPath = 'public.pem';
+
+if (!file_exists($privateKeyPath) || !file_exists($publicKeyPath))
+    $keyPair = generateKeyPair($privateKeyPath, $publicKeyPath);
+
+function encryptPassword($password, $publicKeyPath) {
+    $publicKey = openssl_pkey_get_public(file_get_contents($publicKeyPath));
+    openssl_public_encrypt($password, $encryptedPassword, $publicKey);
+    return base64_encode($encryptedPassword);
+}
+
+function decryptPassword($encryptedPasswordBase64, $privateKeyPath) {
+    $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
+    $encryptedPassword = base64_decode($encryptedPasswordBase64);
+    openssl_private_decrypt($encryptedPassword, $decryptedPassword, $privateKey);
+    return $decryptedPassword;
+}
 ?>

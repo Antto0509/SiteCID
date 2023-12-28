@@ -26,7 +26,7 @@
 
         <div class="form-container">
             <label for="email" class="label">Email :</label>
-            <span><?php echo $ligne['email']; ?></span>
+            <span><?php echo $ligne['adresse_email']; ?></span>
         </div>
 
         <div class="form-container descrition">

@@ -4,7 +4,8 @@
     "type": "project",
     "license": "MIT",
     "require": {
-      "ext-openssl": "*"
+      "ext-openssl": "*",
+      "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {

@@ -1,30 +1,6 @@
 <?php
 include_once('../parametres/configurations.php');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['adresse_email'];
-    $password = $_POST['mot_de_passe'];
-
-    // Récupération des informations de l'utilisateur depuis la base de données
-    $user = get_result("SELECT * FROM Utilisateur WHERE email_utilisateur = '$email'");
-
-    if ($user) {
-        // Déchiffrement du mot de passe stocké
-        $decryptedPassword = decryptPassword($user['mdp_utilisateur'], 'private.pem');
-
-        // Vérification du mot de passe
-        if ($password === $decryptedPassword) {
-            // Mot de passe correct, effectuez les actions nécessaires pour la connexion réussie
-            // ...
-
-            // Redirection vers une page de succès ou autre action
-            // header('Location: '.$successPage);
-            exit();
-        }
-    }
-
-    $errorMessage = "Erreur : identifiant ou mot de passe incorrect";
-}
+include_once ('../core/Utilisateur.php');
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Connexion - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
-    <!-- Page de connexion (identifiants ou e-mail + mdp) -->
     <?php include "../includes/header.php";?>
 
     <main class="conteneur-connexion">
@@ -44,6 +19,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Se connecter</p>
         </header>
         <section class="saisie-infos-connexion">
+            <?php
+            // Ajout de la création d'un objet Utilisateur
+            $utilisateur = new Utilisateur();
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $email = $_POST['adresse_email'];
+                $password = $_POST['mot_de_passe'];
+
+                // Vérification des informations d'authentification
+                $utilisateurData = $utilisateur->login($email);
+
+                if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur'])) {
+                    // Authentification réussie
+                    $_SESSION['idUser'] = $utilisateurData['id_utilisateur'];
+                    echo 'Authentification réussie. Redirection vers la page d\'accueil...';
+                    // Ajoutez votre redirection ici
+                } else {
+                    // Authentification échouée
+                    echo 'Erreur : identifiant ou mot de passe incorrect.';
+                }
+            }
+            ?>
             <form action="" method="post">
                 <div class="groupe-input">
                     <label for="email">E-mail</label>

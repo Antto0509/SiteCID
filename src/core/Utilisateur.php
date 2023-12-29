@@ -3,21 +3,21 @@
 class Utilisateur {
 
     function login($email){
-        $result = get_result("SELECT * FROM utilisateur WHERE email_utilisateur = '".$email."'");
+        $result = get_result("SELECT * FROM Utilisateur WHERE email_utilisateur = '".$email."'");
         return $result;
     }
 
     function getDataUtilisateur($idUser, $emailUser){
-        $result = get_result("SELECT * FROM utilisateur WHERE id_utilisateur = '".$idUser."' AND email_utilisateur = '".$emailUser."'");
+        $result = get_result("SELECT * FROM Utilisateur WHERE id_utilisateur = '".$idUser."' AND email_utilisateur = '".$emailUser."'");
         return $result;
     }
 
     function updateDataUtilisateur($idUser, $dataUser){
-        return set_update("utilisateur", $dataUser, "id_utilisateur = '".$idUser."'", true);
+        return set_update("Utilisateur", $dataUser, "id_utilisateur = '".$idUser."'", true);
     }
 
     function getPasswordUtilisateur($idUser){
-        $result = get_result("SELECT mdp_utilisateur FROM utilisateur WHERE id_utilisateur='".$idUser."'");
+        $result = get_result("SELECT mdp_utilisateur FROM Utilisateur WHERE id_utilisateur='".$idUser."'");
         return $result;
     }
 
@@ -35,62 +35,82 @@ class Utilisateur {
             );
 
             // Mettez à jour le mot de passe chiffré
-            return set_update("utilisateur", $values, "id_utilisateur='".$idUser."'", true);
+            return set_update("Utilisateur", $values, "id_utilisateur='".$idUser."'", true);
         } else {
             return false;
         }
     }
 
-    function addUtilisateur($email, $password){
+    function addUtilisateur($nom, $prenom, $email, $password, $emploi, $genre, $promotion){
         // Utilisez la fonction d'encryptPassword pour chiffrer le mot de passe
         $encryptedPassword = encryptPassword($password, 'public.pem');
 
-        $values= array(
+        // Déterminez l'id_genre en fonction de la civilité
+        $idGenre = ($genre === 'monsieur') ? 0 : 1; // 0 pour Monsieur, 1 pour Madame
+
+        $idPromotion = ($promotion - 1985) + 1;
+
+        $values = array(
+            "nom_utilisateur" => $nom,
+            "prenom_utilisateur" => $prenom,
             "email_utilisateur" => $email,
             "mdp_utilisateur" => $encryptedPassword,
-            // Ajoutez d'autres champs requis
+            "num_tel_utilisateur" => null,
+            "date_naissance_utilisateur" => null,
+            "emploi_utilisateur" => $emploi,
+            "url_photo_utilisateur" => null,
+            "id_adresse" => null,
+            "id_genre" => $idGenre,
+            "id_promotion" => $idPromotion,
+            "id_role" => 1, // 0 pour Administrateur, 1 pour Utilisateur
+            "id_visibilite" => null
         );
 
-        return set_insert("utilisateur", $values, 1);
+        return set_insert("Utilisateur", $values, 1);
     }
 
     function log_account(){
         if(!isset($_SESSION['idUser']) || $_SESSION['idUser'] == ""){
             $_SESSION['page_call'] = "https://".$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
-            Header("Location: ".URLSITEWEB."se-connecter/");
+            header("Location: ".PAGES_PATH."/login.php");
             exit();
         }
     }
 
     function getUtilisateur($where){
-        return get_result("SELECT * FROM utilisateur WHERE ".$where);
+        return get_result("SELECT * FROM Utilisateur WHERE ".$where);
     }
 
     function getLstUtilisateur($where = null){
-        $request = "SELECT * FROM utilisateur ";
+        $request = "SELECT * FROM Utilisateur ";
         if($where) $request .= "WHERE ".$where;
         return get_results($request);
     }
 
     function setAddAdresse($values){
-        return set_insert("utilisateur_adresse", $values, 1);
+        // Mettez à jour la table à laquelle vous ajoutez l'adresse
+        return set_insert("Adresse", $values, 1);
     }
 
     function setUpdateAdresse($id, $values){
-        return set_update("utilisateur_adresse", $values, 'id="'.$id.'"', 1);
+        // Mettez à jour la table à laquelle vous mettez à jour l'adresse
+        return set_update("Adresse", $values, 'id_adresse="'.$id.'"', 1);
     }
 
     function setDeleteAdresse($id){
-        return set_delete("utilisateur_adresse", "id='".$id."'", 1);
+        // Mettez à jour la table à laquelle vous supprimez l'adresse
+        return set_delete("Adresse", "id_adresse='".$id."'", 1);
     }
 
     function getAdresse($where){
-        $request = "SELECT * FROM utilisateur_adresse WHERE ".$where;
+        // Mettez à jour la table à partir de laquelle vous obtenez l'adresse
+        $request = "SELECT * FROM Adresse WHERE ".$where;
         return get_result($request);
     }
 
     function getLstAdresse($where = null){
-        $request = "SELECT * FROM utilisateur_adresse ";
+        // Mettez à jour la table à partir de laquelle vous obtenez la liste des adresses
+        $request = "SELECT * FROM Adresse ";
         if($where) $request .= " WHERE ".$where;
         return get_results($request);
     }

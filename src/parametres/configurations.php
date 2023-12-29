@@ -198,6 +198,11 @@ function encryptPassword($password, $publicKeyPath) {
     return base64_encode($encryptedPassword);
 }
 
+function verifyPassword($inputPassword, $hashedPassword) {
+    $decryptedPassword = decryptPassword($hashedPassword, 'private.pem');
+    return $decryptedPassword === $inputPassword;
+}
+
 function decryptPassword($encryptedPasswordBase64, $privateKeyPath) {
     $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
     $encryptedPassword = base64_decode($encryptedPasswordBase64);

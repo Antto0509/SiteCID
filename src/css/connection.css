@@ -50,7 +50,8 @@
 }
 
 /* entrée du formulaire */
-.saisie-infos-connexion form input {
+.saisie-infos-connexion form input,
+.saisie-infos-connexion form select {
     width: calc(100% - 16px); 
     padding: 10px;
     margin-bottom: 16px;

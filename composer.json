@@ -3,7 +3,9 @@
     "description": "Projet SAE - Site web pour le Cercle des Informaticiens Dispersés (CID)",
     "type": "project",
     "license": "MIT",
-    "require": {},
+    "require": {
+      "ext-openssl": "*"
+    },
     "autoload": {
         "psr-4": {
             "Antto0509\\SiteCID\\": "src/"

@@ -25,6 +25,10 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.saisie-infos-connexion .error-message {
+    color: red;
+}
+
 /* groupe des civilités */
 .saisie-infos-connexion form .groupe-civilite {
     display: flex;

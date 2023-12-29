@@ -116,17 +116,16 @@ if ($_POST['mot_de_passe'] !== $_POST['conf_mot_de_passe']) {
                     } else {
                         $errorMessage = 'Erreur lors de l\'inscription.';
                     }
-                }
-
-                if (isset($errorMessage)) : ?>
-                    <div class="error-message"><?php echo 'Erreur : '.$errorMessage; ?></div>
-                <?php endif; ?>
+                }?>
 
                 <button type="submit">Inscription</button>
             </form>
             <div class="texte-connexion">
                 <p>Vous avez déjà un compte ? <a href="login.php">Se connecter</a></p>
             </div>
+            <?php if (isset($errorMessage)) : ?>
+                <div class="error-message"><?php echo 'Erreur : '.$errorMessage; ?></div>
+            <?php endif; ?>
         </section>
     </main>
     

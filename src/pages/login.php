@@ -8,7 +8,7 @@ include_once ('../core/Utilisateur.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLSITEWEB ?>/css/connection.css">
+    <link rel="stylesheet" href="../css/connection.css">
     <title>Connexion - Cercle des Informaticiens Dispersés</title>
 </head>
 <body>
@@ -37,7 +37,7 @@ include_once ('../core/Utilisateur.php');
                     // Ajoutez votre redirection ici
                 } else {
                     // Authentification échouée
-                    echo 'Erreur : identifiant ou mot de passe incorrect.';
+                    $errorMessage = 'Erreur : identifiant ou mot de passe incorrect.';
                 }
             }
             ?>
@@ -55,7 +55,7 @@ include_once ('../core/Utilisateur.php');
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">
-                <p>Pas de compte ? <a href="<?php echo PAGES_PATH ?>/register.php">Créer un compte</a></p>
+                <p>Pas de compte ? <a href="register.php">Créer un compte</a></p>
             </div>
             <?php if (isset($errorMessage)) : ?>
                 <div class="error-message"><?php echo $errorMessage; ?></div>

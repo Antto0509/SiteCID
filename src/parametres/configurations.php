@@ -6,6 +6,8 @@ const ASSETS_PATH =  URLSITEWEB . '/assets';
 const IMGS_PATH = ASSETS_PATH . '/imgs';
 const PAGES_PATH = URLSITEWEB . '/pages';
 
+include_once (URLSITEWEB.'/core/Utilisateur.php');
+
 date_default_timezone_set('Europe/Paris');
 
 $DEBUG_SELECT = false;
@@ -191,6 +193,24 @@ $publicKeyPath = 'public.pem';
 
 if (!file_exists($privateKeyPath) || !file_exists($publicKeyPath))
     $keyPair = generateKeyPair($privateKeyPath, $publicKeyPath);
+
+function encryptEmail($email, $publicKeyPath) {
+    $publicKey = openssl_pkey_get_public(file_get_contents($publicKeyPath));
+    openssl_public_encrypt($email, $encryptedEmail, $publicKey);
+    return base64_encode($encryptedEmail);
+}
+
+function verifyEmail($inputEmail, $hashedEmail) {
+    $decryptedEmail = decryptEmail($hashedEmail, 'private.pem');
+    return $decryptedEmail === $inputEmail;
+}
+
+function decryptEmail($encryptedEmailBase64, $privateKeyPath) {
+    $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
+    $encryptedEmail = base64_decode($encryptedEmailBase64);
+    openssl_private_decrypt($encryptedEmail, $decryptedEmail, $privateKey);
+    return $decryptedEmail;
+}
 
 function encryptPassword($password, $publicKeyPath) {
     $publicKey = openssl_pkey_get_public(file_get_contents($publicKeyPath));

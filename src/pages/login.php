@@ -1,6 +1,5 @@
 <?php
 include_once('../parametres/configurations.php');
-include_once ('../core/Utilisateur.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,28 +18,6 @@ include_once ('../core/Utilisateur.php');
             <p>Se connecter</p>
         </header>
         <section class="saisie-infos-connexion">
-            <?php
-            // Ajout de la création d'un objet Utilisateur
-            $utilisateur = new Utilisateur();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $email = $_POST['adresse_email'];
-                $password = $_POST['mot_de_passe'];
-
-                // Vérification des informations d'authentification
-                $utilisateurData = $utilisateur->login($email);
-
-                if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur'])) {
-                    // Authentification réussie
-                    $_SESSION['idUser'] = $utilisateurData['id_utilisateur'];
-                    echo 'Authentification réussie. Redirection vers la page d\'accueil...';
-                    // Ajoutez votre redirection ici
-                } else {
-                    // Authentification échouée
-                    $errorMessage = 'Erreur : identifiant ou mot de passe incorrect.';
-                }
-            }
-            ?>
             <form action="" method="post">
                 <div class="groupe-input">
                     <label for="email">E-mail</label>
@@ -52,11 +29,39 @@ include_once ('../core/Utilisateur.php');
                     <input type="password" id="mdp" name="mot_de_passe">
                     <a href="#" class="mot-de-passe-oubli">Mot de passe oublié</a>
                 </div>
+
                 <button type="submit">Connexion</button>
             </form>
             <div class="texte-connexion">
                 <p>Pas de compte ? <a href="register.php">Créer un compte</a></p>
             </div>
+
+            <?php
+            $utilisateur = new Utilisateur();
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $email = $_POST['adresse_email'];
+                $password = $_POST['mot_de_passe'];
+
+                // Vérification des informations d'authentification
+                $utilisateurData = $utilisateur->login($email);
+
+                if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur']) && verifyEmail($email, $utilisateurData['email_utilisateur'])) {
+                    // Authentification réussie
+                    $_SESSION['idUser'] = $utilisateurData['id_utilisateur'];
+
+                    // Obtention de l'ID de l'utilisateur
+                    $idUtilisateur = $utilisateur->getIdUtilisateur("email_utilisateur = '".$email."'");
+
+                    echo 'Authentification réussie. Redirection vers la page d\'accueil...';
+                    header('Location : ../index.php');
+                } else {
+                    // Authentification échouée
+                    $errorMessage = 'Erreur : identifiant ou mot de passe incorrect.';
+                }
+            }
+            ?>
+
             <?php if (isset($errorMessage)) : ?>
                 <div class="error-message"><?php echo $errorMessage; ?></div>
             <?php endif; ?>

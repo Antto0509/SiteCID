@@ -41,19 +41,40 @@ class Utilisateur {
         }
     }
 
+    function getNumberOfUsers() {
+        $result = get_result("SELECT COUNT(*) as count FROM Utilisateur");
+        return $result['count'];
+    }
+
+    function generateCustomUserId($nom, $prenom) {
+        // Obtenez le nombre d'utilisateurs actuels
+        $numero = $this->getNumberOfUsers() + 1;
+
+        $nomAbrege = substr($nom, 0, 2);
+        $prenomAbrege = substr($prenom, 0, 2);
+
+        // Combinez le numéro, les deux premières lettres du nom et du prénom pour former l'ID personnalisé.
+        $customUserId = $numero . $nomAbrege . $prenomAbrege;
+
+        return $customUserId;
+    }
+
     function addUtilisateur($nom, $prenom, $email, $password, $emploi, $genre, $promotion){
-        // Utilisez la fonction d'encryptPassword pour chiffrer le mot de passe
+        // Utilisation de la fonction d'encryptEmail pour chiffrer l'adresse mail
+        $encryptedEmail = encryptEmail($email, 'public.pem');
+
+        // Utilisation de la fonction d'encryptPassword pour chiffrer le mot de passe
         $encryptedPassword = encryptPassword($password, 'public.pem');
 
-        // Déterminez l'id_genre en fonction de la civilité
-        $idGenre = ($genre === 'monsieur') ? 0 : 1; // 0 pour Monsieur, 1 pour Madame
+        // Détermine l'id_genre en fonction de la civilité
+        $idGenre = ($genre === 'monsieur') ? 1 : 2; // 1 pour Homme, 2 pour Femme
 
         $idPromotion = ($promotion - 1985) + 1;
 
         $values = array(
             "nom_utilisateur" => $nom,
             "prenom_utilisateur" => $prenom,
-            "email_utilisateur" => $email,
+            "email_utilisateur" => $encryptedEmail,
             "mdp_utilisateur" => $encryptedPassword,
             "num_tel_utilisateur" => null,
             "date_naissance_utilisateur" => null,
@@ -62,8 +83,8 @@ class Utilisateur {
             "id_adresse" => null,
             "id_genre" => $idGenre,
             "id_promotion" => $idPromotion,
-            "id_role" => 1, // 0 pour Administrateur, 1 pour Utilisateur
-            "id_visibilite" => null
+            "id_role" => 2, // 1 pour Administrateur, 2 pour Utilisateur
+            "id_visibilite" => 2 // 1 pour Visible, 2 pour Non visible
         );
 
         return set_insert("Utilisateur", $values, 1);
@@ -75,6 +96,10 @@ class Utilisateur {
             header("Location: ".PAGES_PATH."/login.php");
             exit();
         }
+    }
+
+    function getIdUtilisateur($where){
+        return get_result("SELECT id_utilisateur FROM Utilisateur".where);
     }
 
     function getUtilisateur($where){

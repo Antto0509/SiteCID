@@ -1,5 +1,65 @@
 <?php
 include_once('../parametres/configurations.php');
+
+$utilisateur = new Utilisateur();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $email = $_POST['adresse_email'];
+        $password = $_POST['mot_de_passe'];
+        $emploi = $_POST['emploi'];
+
+        // Vérifier si les champs obligatoires sont renseignés
+        $champsObligatoires = array('nom', 'prenom', 'adresse_email', 'mot_de_passe', 'conf_mot_de_passe');
+        foreach ($champsObligatoires as $champ) {
+            if (empty($_POST[$champ])) {
+                throw new Exception('Veuillez remplir tous les champs obligatoires.');
+            }
+        }
+
+        // Vérifier la correspondance des mots de passe
+        if ($_POST['mot_de_passe'] !== $_POST['conf_mot_de_passe']) {
+            throw new Exception('Les mots de passe ne correspondent pas.');
+        }
+
+        // Vérifier l'adhésion à la politique de confidentialité
+        if (!isset($_POST['politique_confidentialite'])) {
+            throw new Exception('Veuillez adhérer à la politique de confidentialité pour vous inscrire.');
+        }
+
+        $idGenre = isset($_POST['monsieur']) ? 'monsieur' : (isset($_POST['madame']) ? 'madame' : '');
+
+        // Récupérer l'année de promotion sélectionnée
+        $annee_promotion = $_POST['annee_promotion'];
+
+        $customUserId = $utilisateur->generateCustomUserId($nom, $prenom);
+
+        // Ajout d'un nouvel utilisateur avec le mot de passe chiffré et l'année de promotion
+        $result = $utilisateur->addUtilisateur($nom, $prenom, $email, $password, $emploi, $idGenre, $annee_promotion);
+
+        // Récupérer la ville si elle est saisie
+        $ville = isset($_POST['ville']) ? $_POST['ville'] : null;
+
+        // Ajouter la ville dans la table Ville si elle est saisie
+        if (!empty($ville)) {
+            $valuesVille = array(
+                'nom_ville' => $ville,
+            );
+            set_insert('Ville', $valuesVille);
+        }
+
+        if (!$result)
+            throw new Exception('Erreur lors de l\'inscription.');
+        else {
+            header('Location : http://176.223.137.210/SiteCID/src/pages/login.php');
+            exit();
+        }
+    } catch (Exception $e) {
+        $errorMessage = 'Erreur : ' . $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -87,76 +147,16 @@ include_once('../parametres/configurations.php');
 
                 <button type="submit">Inscription</button>
             </form>
+
             <div class="texte-connexion">
                 <p>Vous avez déjà un compte ? <a href="login.php">Se connecter</a></p>
             </div>
 
-            <?php
-            $utilisateur = new Utilisateur();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $nom = $_POST['nom'];
-                $prenom = $_POST['prenom'];
-                $email = $_POST['adresse_email'];
-                $password = $_POST['mot_de_passe'];
-                $emploi = $_POST['emploi'];
-
-                // Vérifier si les champs obligatoires sont renseignés
-                $champsObligatoires = array('nom', 'prenom', 'adresse_email', 'mot_de_passe', 'conf_mot_de_passe');
-                foreach ($champsObligatoires as $champ) {
-                    if (empty($_POST[$champ])) {
-                        $errorMessage = 'Veuillez remplir tous les champs obligatoires.';
-                        break;
-                    }
-                }
-
-                // Vérifier la correspondance des mots de passe
-                if ($_POST['mot_de_passe'] !== $_POST['conf_mot_de_passe']) {
-                    $errorMessage = 'Les mots de passe ne correspondent pas.';
-                }
-
-                // Vérifier l'adhésion à la politique de confidentialité
-                if (!isset($_POST['politique_confidentialite'])) {
-                    $errorMessage = 'Veuillez adhérer à la politique de confidentialité pour vous inscrire.';
-                }
-
-                // Ajout d'un nouvel utilisateur avec le mot de passe chiffré
-                $idGenre = isset($_POST['monsieur']) ? 'monsieur' : (isset($_POST['madame']) ? 'madame' : '');
-
-                // Récupérer l'année de promotion sélectionnée
-                $annee_promotion = $_POST['annee_promotion'];
-
-                $customUserId = $utilisateur->generateCustomUserId($nom, $prenom);
-
-                // Ajout d'un nouvel utilisateur avec le mot de passe chiffré et l'année de promotion
-                $result = $utilisateur->addUtilisateur($nom, $prenom, $email, $password, $emploi, $idGenre, $annee_promotion);
-
-                // Récupérer la ville si elle est saisie
-                $ville = isset($_POST['ville']) ? $_POST['ville'] : '';
-
-                // Ajouter la ville dans la table Ville si elle est saisie
-                if (!empty($ville)) {
-                    $valuesVille = array(
-                        'nom_ville' => $ville,
-                    );
-                    set_insert('Ville', $valuesVille);
-                }
-
-                if ($result) {
-                    // Redirection vers la page d'accueil ou toute autre page
-                    header('Location: ../index.php');
-                    exit();
-                } else {
-                    $errorMessage = 'Erreur lors de l\'inscription.';
-                }
-            }?>
-
             <?php if (isset($errorMessage)) : ?>
-                <div class="error-message"><?php echo 'Erreur : '.$errorMessage; ?></div>
+                <div class="error-message"><?php echo $errorMessage; ?></div>
             <?php endif; ?>
         </section>
     </main>
-    
     <?php include "../includes/footer.php";?>
 </body>
 </html>

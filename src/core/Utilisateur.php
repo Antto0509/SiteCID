@@ -60,11 +60,14 @@ class Utilisateur {
     }
 
     function addUtilisateur($nom, $prenom, $email, $password, $emploi, $genre, $promotion){
+        // Utilisation de la fonction generateCustomId pour générer un Id à l'utilisateur
+        $id_utilisateur = $this->generateCustomUserId($nom, $prenom);
+
         // Utilisation de la fonction d'encryptEmail pour chiffrer l'adresse mail
-        $encryptedEmail = encryptEmail($email, 'public.pem');
+        /*$encryptedEmail = encryptEmail($email, 'public.pem');
 
         // Utilisation de la fonction d'encryptPassword pour chiffrer le mot de passe
-        $encryptedPassword = encryptPassword($password, 'public.pem');
+        $encryptedPassword = encryptPassword($password, 'public.pem');*/
 
         // Détermine l'id_genre en fonction de la civilité
         $idGenre = ($genre === 'monsieur') ? 1 : 2; // 1 pour Homme, 2 pour Femme
@@ -72,10 +75,11 @@ class Utilisateur {
         $idPromotion = ($promotion - 1985) + 1;
 
         $values = array(
+            "id_utilisateur" => $id_utilisateur,
             "nom_utilisateur" => $nom,
             "prenom_utilisateur" => $prenom,
-            "email_utilisateur" => $encryptedEmail,
-            "mdp_utilisateur" => $encryptedPassword,
+            "email_utilisateur" => $email /*$encryptedEmail*/,
+            "mdp_utilisateur" => $password /*$encryptedPassword*/,
             "num_tel_utilisateur" => null,
             "date_naissance_utilisateur" => null,
             "emploi_utilisateur" => $emploi,

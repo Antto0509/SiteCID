@@ -1,3 +1,33 @@
+<?php
+global $bdd;
+
+// Vérifie si le formulaire a été soumis et s'il y a un terme de recherche
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search_term'])) {
+    // Récupérer le terme de recherche depuis le formulaire
+    $term = $_GET['search_term'];
+
+    // Vérifier si le terme n'est pas vide
+    if (!empty($term)) {
+        // Échapper le terme de recherche pour éviter les injections SQL
+        $escapedTerm = str_replace(["'"], '', $bdd->quote($term));
+
+        // Requête pour rechercher des utilisateurs en fonction du terme
+        $queryUtilisateur = "SELECT * FROM Utilisateur WHERE nom_utilisateur LIKE '%$escapedTerm%' OR prenom_utilisateur LIKE '%$escapedTerm%' OR email_utilisateur LIKE '%$escapedTerm%'";
+
+        // Requête pour rechercher des événements en fonction du terme
+        $queryEvenement = "SELECT * FROM Evenement WHERE titre_evenement LIKE '%$escapedTerm%' OR description_evenement LIKE '%$escapedTerm%'";
+
+        // Requête pour rechercher des photos en fonction du terme
+        $queryPhoto = "SELECT * FROM Photo WHERE description_photo LIKE '%$escapedTerm%'";
+
+        // Exécuter les requêtes
+        $resultUtilisateur = get_results($queryUtilisateur);
+        $resultEvenement = get_results($queryEvenement);
+        $resultPhoto = get_results($queryPhoto);
+    }
+}
+?>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<?php echo URLSITEWEB; ?>/css/style.css">
@@ -28,9 +58,33 @@
         </span>
     </a>
 
-    <form class="search__container">
-        <input class="search__input" type="text" placeholder="Rechercher un évènement, une personne...">
+    <form class="search__container" method="GET" action="">
+        <input class="search__input" type="text" placeholder="Rechercher un évènement, une personne..." name="search_term" value="<?php echo isset($term) ? $term : ''; ?>">
     </form>
+    <?php if (isset($term) && !empty($term)) : ?>
+        <div class="result-container">
+            <?php
+            if (count($resultUtilisateur) > 0 || count($resultEvenement) > 0 || count($resultPhoto) > 0) {
+                if (count($resultUtilisateur) > 0) {
+                    echo '<p>Utilisateurs :</p>';
+                    print_r($resultUtilisateur);
+                }
+
+                if (count($resultEvenement) > 0) {
+                    echo '<p>Événements :</p>';
+                    print_r($resultEvenement);
+                }
+
+                if (count($resultPhoto) > 0) {
+                    echo '<p>Photos :</p>';
+                    print_r($resultPhoto);
+                }
+            } else {
+                echo '<p>Aucun résultat trouvé.</p>';
+            }
+            ?>
+        </div>
+    <?php endif; ?>
 
     <div class="header-right">
         <a href="" class="btn-mail"><img class="mail" src="<?php echo IMGS_PATH; ?>/mail.png" alt=""></a>

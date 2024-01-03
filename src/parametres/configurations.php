@@ -5,8 +5,10 @@ const URLSITEWEB = "http://176.223.137.210/SiteCID/src";
 const ASSETS_PATH =  URLSITEWEB . '/assets';
 const IMGS_PATH = ASSETS_PATH . '/imgs';
 const PAGES_PATH = URLSITEWEB . '/pages';
+const SCRIPT_PATH = URLSITEWEB . '/script';
+const CORE_PATH = URLSITEWEB . '/core';
 
-include_once (URLSITEWEB.'/core/Utilisateur.php');
+include('../core/Utilisateur.php');
 
 date_default_timezone_set('Europe/Paris');
 
@@ -163,7 +165,7 @@ function set_delete($table, $values, $return){
 }
 
 // Méthode RSA
-function generateKeyPair($privateKeyPath, $publicKeyPath) {
+/*function generateKeyPair($privateKeyPath, $publicKeyPath) {
     $config = array(
         'private_key_bits' => 2048,
         'private_key_type' => OPENSSL_KEYTYPE_RSA,
@@ -228,5 +230,5 @@ function decryptPassword($encryptedPasswordBase64, $privateKeyPath) {
     $encryptedPassword = base64_decode($encryptedPasswordBase64);
     openssl_private_decrypt($encryptedPassword, $decryptedPassword, $privateKey);
     return $decryptedPassword;
-}
+}*/
 ?>

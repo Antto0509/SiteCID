@@ -1,5 +1,33 @@
 <?php
 include_once('../parametres/configurations.php');
+
+$utilisateur = new Utilisateur();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $email = $_POST['adresse_email'];
+        $password = $_POST['mot_de_passe'];
+
+        // Vérification des informations d'authentification
+        $utilisateurData = $utilisateur->login($email);
+
+        if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur']) && verifyEmail($email, $utilisateurData['email_utilisateur'])) {
+            // Obtention de l'ID de l'utilisateur
+            $idUtilisateur = $utilisateur->getIdUtilisateur("email_utilisateur = '" . $email . "'");
+
+            // Authentification réussie
+            $idUtilisateur = $utilisateurData['id_utilisateur'];
+
+            header('Location : http://176.223.137.210/SiteCID/src');
+            exit();
+        } else {
+            // Authentification échouée
+            throw new Exception('Identifiant ou mot de passe incorrect.');
+        }
+    } catch (Exception $e) {
+        $errorMessage = 'Erreur : ' . $e->getMessage();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,32 +63,6 @@ include_once('../parametres/configurations.php');
             <div class="texte-connexion">
                 <p>Pas de compte ? <a href="register.php">Créer un compte</a></p>
             </div>
-
-            <?php
-            $utilisateur = new Utilisateur();
-
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $email = $_POST['adresse_email'];
-                $password = $_POST['mot_de_passe'];
-
-                // Vérification des informations d'authentification
-                $utilisateurData = $utilisateur->login($email);
-
-                if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur']) && verifyEmail($email, $utilisateurData['email_utilisateur'])) {
-                    // Authentification réussie
-                    $_SESSION['idUser'] = $utilisateurData['id_utilisateur'];
-
-                    // Obtention de l'ID de l'utilisateur
-                    $idUtilisateur = $utilisateur->getIdUtilisateur("email_utilisateur = '".$email."'");
-
-                    echo 'Authentification réussie. Redirection vers la page d\'accueil...';
-                    header('Location : ../index.php');
-                } else {
-                    // Authentification échouée
-                    $errorMessage = 'Erreur : identifiant ou mot de passe incorrect.';
-                }
-            }
-            ?>
 
             <?php if (isset($errorMessage)) : ?>
                 <div class="error-message"><?php echo $errorMessage; ?></div>

@@ -40,7 +40,7 @@ h1{
 }
 
 /* Header */
-     
+
 .entete {
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@ h1{
 .logo,
 .openBtn,
 .burger-icon {
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 .search__container {
@@ -77,6 +77,17 @@ h1{
     margin-left: auto;
 }
 
+@media screen and (max-width: 850px) {
+    .search__container {
+        flex: 0 0 200px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .search__container {
+        flex: 0 0 90px;
+    }
+}
 
 
 /* Menu */
@@ -182,42 +193,58 @@ h1{
 footer {
     background-color: #053B50;
     color : #EEEEEE;
-    display: flex;
-    justify-content: center;
-    align-content: space-between;
-    height: auto;
-}
-
-.col1-foot {
-    height: auto;
-    width: 750px;
-    padding: 20px; 
-}
-
-.col2-foot {
-    height: auto;
-    width: 750px;
+    text-align: center;
     padding: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.contact-foot {
-    margin: 15px;
-    line-height: 0.8cm;
+.col1-foot,
+.col2-foot {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.img-tel-foot {
-    height: 40px;
-    width: 40px;
+.intitule-contact,
+.intitule-info {
+    margin-bottom: 10px; /* Ajustez l'espace entre l'intitulé et le contenu selon vos préférences */
 }
 
-.img-mail-foot {
-    height: 40px;
-    width: 60px;
+.contact-foot table {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.contact-foot a img {
-    height: 40px;
-    width: 40px;
+.contact-foot img {
+    width: 30px;
+    height: auto;
+}
+
+footer a {
+    color: #EEEEEE;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #eed700;
+}
+
+@media screen and (min-width: 720px) {
+    footer {
+        padding: 40px;
+    }
+
+    .col1-foot,
+    .col2-foot {
+        width: 48%;
+    }
 }
 
 
@@ -247,6 +274,7 @@ footer {
 }
 
 /* Événement */
+
 
 .event-card {
     max-width: 600px;

@@ -211,7 +211,7 @@ footer {
 
 .intitule-contact,
 .intitule-info {
-    margin-bottom: 10px; /* Ajustez l'espace entre l'intitulé et le contenu selon vos préférences */
+    margin-bottom: 10px;
 }
 
 .contact-foot table {
@@ -233,7 +233,7 @@ footer a {
 }
 
 a:hover {
-    color: #eed700;
+    color: #64CCC5;
 }
 
 @media screen and (min-width: 720px) {

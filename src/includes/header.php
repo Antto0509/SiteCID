@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['search_term'])) {
             <li><a href="#">Nos services</a></li>
             <li><a href="#">Témoignages</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="<?php echo PAGES_PATH; ?>/infoU.php">information personnel</a></li>
+            <li><a href="<?php echo PAGES_PATH; ?>/infoUser.php">Mon compte</a></li>
         </ul>
     </div>
 

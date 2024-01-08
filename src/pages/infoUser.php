@@ -1,5 +1,15 @@
 <?php
 include_once('../parametres/configurations.php');
+
+// Vérifier si l'utilisateur est connecté en vérifiant la présence de variables de session
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    // Rediriger vers la page de connexion s'il n'est pas connecté
+    header('Location: http://176.223.137.210/SiteCID/src/pages/login.php');
+    exit();
+}
+
+// Récupérer le nom d'utilisateur à partir des paramètres de la requête
+$id_utilisateur = $_GET['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +43,7 @@ include_once('../parametres/configurations.php');
                 </select>
 
                 <label for="nom_utilisateur">Nom:</label>
-                <input type="text" id="nom_utilisateur" name="nom_utilisateur">
+                <input type="text" id="nom_utilisateur" name="nom_utilisateur" value=<?php //echo $utilisateurData['nom_utilisateur'] ?>>
 
                 <label for="prenom_utilisateur">Prénom:</label>
                 <input type="text" id="prenom_utilisateur" name="prenom_utilisateur">
@@ -68,7 +78,7 @@ include_once('../parametres/configurations.php');
                 <input type="file" id="image_evenement" name="image_evenement">
 
                 <label for="description_evenement">Description de l'événement:</label>
-                <textarea id="description" name="description_evenement"></textarea>
+                <textarea id="description_evenement" name="description_evenement"></textarea>
 
                 <label for="date_evenement">Date de l'événement:</label>
                 <input type="date" id="date_evenement" name="date_evenement">

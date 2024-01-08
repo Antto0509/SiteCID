@@ -1,6 +1,7 @@
 <?php
 include_once('../parametres/configurations.php');
 
+$privateKey = openssl_pkey_get_private($_SESSION['private_key']);
 $utilisateur = new Utilisateur();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,14 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Vérification des informations d'authentification
         $utilisateurData = $utilisateur->login($email);
 
-        if ($utilisateurData && verifyPassword($password, $utilisateurData['mdp_utilisateur']) && verifyEmail($email, $utilisateurData['email_utilisateur'])) {
-            // Obtention de l'ID de l'utilisateur
-            $idUtilisateur = $utilisateur->getIdUtilisateur("email_utilisateur = '" . $email . "'");
+        if ($utilisateurData && verifyInput($password, $utilisateurData['mdp_utilisateur'], $privateKey) && verifyInput($email, $utilisateurData['email_utilisateur'], $privateKey)) {
+            // Stocker des informations dans la session
+            $_SESSION['user_id'] = $utilisateurData['id_utilisateur'];
+            $_SESSION['user_email'] = $utilisateurData['email_utilisateur'];
 
-            // Authentification réussie
-            $idUtilisateur = $utilisateurData['id_utilisateur'];
+            // Construire l'URL de redirection vers la page personnelle de l'utilisateur
+            $redirectUrl = 'http://176.223.137.210/SiteCID/src/pages/infoUser.php?id=' . $utilisateurData['id_utilisateur'];
 
-            header('Location : http://176.223.137.210/SiteCID/src');
+            // Rediriger vers la page personnelle de l'utilisateur
+            header('Location: ' . $redirectUrl);
             exit();
         } else {
             // Authentification échouée

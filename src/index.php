@@ -1,6 +1,9 @@
 <?php
 include_once('parametres/configurations.php');
 
+// Récupérer le nom d'utilisateur à partir des paramètres de la requête
+$id_utilisateur = $_GET['user_id'];
+
 // Requête SQL pour récupérer les événements triés par date décroissante
 $sql = "SELECT * FROM Evenement ORDER BY date_evenement DESC";
 $evenements = get_results($sql);
@@ -54,7 +57,8 @@ $evenements = get_results($sql);
             // Aucun événement trouvé
             echo "<h2>Aucun événement pour le moment</h2>";
             echo "<p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>";
-            echo "<a href='" . PAGES_PATH . "/event.php'><button>Ajouter un événement</button></a>";
+            $userUrl = 'http://176.223.137.210/SiteCID/src/pages/infoUser.php?id=' . $id_utilisateur;
+            echo "<a href='".$userUrl."'><button>Ajouter un événement</button></a>";
         }
         ?>
     </div>

@@ -1,7 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 include_once('../parametres/configurations.php');
 
 $utilisateur = new Utilisateur();
+$adresse = new Adresse();
+$ville = new Ville();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -29,31 +34,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception('Veuillez adhérer à la politique de confidentialité pour vous inscrire.');
         }
 
+        // Vérifier si l'utilisateur existe déjà dans la base de données
+        if ($utilisateur->isUserExists($email)) {
+            throw new Exception('Utilisateur déjà existant.');
+        }
+
         $idGenre = isset($_POST['monsieur']) ? 'monsieur' : (isset($_POST['madame']) ? 'madame' : '');
 
         // Récupérer l'année de promotion sélectionnée
         $annee_promotion = $_POST['annee_promotion'];
 
+        // Customiser l'identifiant de l'utilisateur
         $customUserId = $utilisateur->generateCustomUserId($nom, $prenom);
 
-        // Ajout d'un nouvel utilisateur avec le mot de passe chiffré et l'année de promotion
-        $result = $utilisateur->addUtilisateur($nom, $prenom, $email, $password, $emploi, $idGenre, $annee_promotion);
-
         // Récupérer la ville si elle est saisie
-        $ville = isset($_POST['ville']) ? $_POST['ville'] : null;
+        $nomVille = $_POST['ville'] ?? null;
 
-        // Ajouter la ville dans la table Ville si elle est saisie
-        if (!empty($ville)) {
-            $valuesVille = array(
-                'nom_ville' => $ville,
+        // Ajouter la ville dans la table Ville si elle est saisie et une adresse dans la table Adresse
+        if (!empty($nomVille)) {
+            if(!$ville->isVilleExists($nomVille)){
+                $valueVille = array(
+                    'nom_ville' => $nomVille,
+                );
+                $ville->setAddVille($valueVille);
+            }
+
+            $id_ville = $ville->getIdVille($nomVille);
+
+            $valuesAdresse = array(
+                'rue' => null,
+                'complement_adresse' => null,
+                'code_postal' => null,
+                'id_ville' => $id_ville,
+                'id_pays' => null
             );
-            set_insert('Ville', $valuesVille);
+        }else{
+            $valuesAdresse = array(
+                'rue' => null,
+                'complement_adresse' => null,
+                'code_postal' => null,
+                'id_ville' => null,
+                'id_pays' => null
+            );
         }
+        $adresse->setAddAdresse($valuesAdresse);
+
+        // Récupérer l'identifiant de l'adresse
+        $id_adresse = $adresse->getMaxIdAdresse();
+
+        // Ajout d'un nouvel utilisateur avec le mot de passe chiffré et l'année de promotion
+        $result = $utilisateur->addUtilisateur($customUserId, $nom, $prenom, $email, $password, $emploi, $idGenre, $annee_promotion, $id_adresse);
 
         if (!$result)
             throw new Exception('Erreur lors de l\'inscription.');
         else {
-            header('Location : http://176.223.137.210/SiteCID/src/pages/login.php');
+            $_SESSION['user_id'] = $customUserId;
+            $_SESSION['user_email'] = $email;
+            header('Location : '.PAGES_PATH.'/login.php');
             exit();
         }
     } catch (Exception $e) {

@@ -9,6 +9,8 @@ const SCRIPT_PATH = URLSITEWEB . '/script';
 const CORE_PATH = URLSITEWEB . '/core';
 
 include('../core/Utilisateur.php');
+include('../core/Adresse.php');
+include('../core/Ville.php');
 
 date_default_timezone_set('Europe/Paris');
 
@@ -165,70 +167,45 @@ function set_delete($table, $values, $return){
 }
 
 // Méthode RSA
-/*function generateKeyPair($privateKeyPath, $publicKeyPath) {
+/*function generateRSAKeys(): array
+{
+    // Configuration des paramètres
     $config = array(
-        'private_key_bits' => 2048,
-        'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        "private_key_bits" => 2048,
+        "private_key_type" => OPENSSL_KEYTYPE_RSA,
     );
 
-    // Générer la paire de clés
+    // Générer une paire de clés
     $res = openssl_pkey_new($config);
 
     // Extraire la clé privée
     openssl_pkey_export($res, $privateKey);
-    file_put_contents($privateKeyPath, $privateKey);
 
     // Extraire la clé publique
-    $publicKeyDetails = openssl_pkey_get_details($res);
-    $publicKey = $publicKeyDetails['key'];
-    file_put_contents($publicKeyPath, $publicKey);
+    $publicKey = openssl_pkey_get_details($res)['key'];
 
-    return array(
-        'private_key' => $privateKey,
-        'public_key' => $publicKey,
-    );
-}
-
-// Génération des clés si elles n'existent pas déjà
-$privateKeyPath = 'private.pem';
-$publicKeyPath = 'public.pem';
-
-if (!file_exists($privateKeyPath) || !file_exists($publicKeyPath))
-    $keyPair = generateKeyPair($privateKeyPath, $publicKeyPath);
-
-function encryptEmail($email, $publicKeyPath) {
-    $publicKey = openssl_pkey_get_public(file_get_contents($publicKeyPath));
-    openssl_public_encrypt($email, $encryptedEmail, $publicKey);
-    return base64_encode($encryptedEmail);
-}
-
-function verifyEmail($inputEmail, $hashedEmail) {
-    $decryptedEmail = decryptEmail($hashedEmail, 'private.pem');
-    return $decryptedEmail === $inputEmail;
-}
-
-function decryptEmail($encryptedEmailBase64, $privateKeyPath) {
-    $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
-    $encryptedEmail = base64_decode($encryptedEmailBase64);
-    openssl_private_decrypt($encryptedEmail, $decryptedEmail, $privateKey);
-    return $decryptedEmail;
-}
-
-function encryptPassword($password, $publicKeyPath) {
-    $publicKey = openssl_pkey_get_public(file_get_contents($publicKeyPath));
-    openssl_public_encrypt($password, $encryptedPassword, $publicKey);
-    return base64_encode($encryptedPassword);
-}
-
-function verifyPassword($inputPassword, $hashedPassword) {
-    $decryptedPassword = decryptPassword($hashedPassword, 'private.pem');
-    return $decryptedPassword === $inputPassword;
-}
-
-function decryptPassword($encryptedPasswordBase64, $privateKeyPath) {
-    $privateKey = openssl_pkey_get_private(file_get_contents($privateKeyPath));
-    $encryptedPassword = base64_decode($encryptedPasswordBase64);
-    openssl_private_decrypt($encryptedPassword, $decryptedPassword, $privateKey);
-    return $decryptedPassword;
+    return array('privateKey' => $privateKey, 'publicKey' => $publicKey);
 }*/
+
+$_SESSION['public_key'] = file_get_contents(URLSITEWEB.'/parametres/public.pem');
+$_SESSION['private_key'] = file_get_contents(URLSITEWEB.'/parametres/private.pem');
+
+function encrypt($data, $publicKey): string
+{
+    openssl_public_encrypt($data, $encrypted, $publicKey);
+    return base64_encode($encrypted);
+}
+
+function verifyInput($input, $hashed, $privateKey): bool
+{
+    $decrypted = decrypt($hashed, $privateKey);
+    return $decrypted === $input;
+}
+
+function decrypt($data, $privateKey): string
+{
+    $encrypted = base64_decode($data);
+    openssl_private_decrypt($encrypted, $decrypted, $privateKey);
+    return $decrypted;
+}
 ?>

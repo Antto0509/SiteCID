@@ -1,8 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 include_once('../parametres/configurations.php');
 
-$privateKey = openssl_pkey_get_private($_SESSION['private_key']);
 $utilisateur = new Utilisateur();
+$dechiffrement = new RSA('../parametres/public.pem', '../parametres/private.pem');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
@@ -12,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Vérification des informations d'authentification
         $utilisateurData = $utilisateur->login($email);
 
-        if ($utilisateurData && verifyInput($password, $utilisateurData['mdp_utilisateur'], $privateKey) && verifyInput($email, $utilisateurData['email_utilisateur'], $privateKey)) {
+        if ($utilisateurData && $dechiffrement->verify($password, $utilisateurData['mdp_utilisateur'])) {
             // Stocker des informations dans la session
             $_SESSION['user_id'] = $utilisateurData['id_utilisateur'];
             $_SESSION['user_email'] = $utilisateurData['email_utilisateur'];
@@ -24,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ' . $redirectUrl);
             exit();
         } else {
-            // Authentification échouée
             throw new Exception('Identifiant ou mot de passe incorrect.');
         }
     } catch (Exception $e) {
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/connection.css">
-    <title>Connexion - Cercle des Informaticiens Dispersés</title>
+    <title><?php echo "Connexion | ".NAME_SITE ?></title>
 </head>
 <body>
     <?php include "../includes/header.php";?>

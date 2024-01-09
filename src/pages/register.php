@@ -47,6 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Customiser l'identifiant de l'utilisateur
         $customUserId = $utilisateur->generateCustomUserId($nom, $prenom);
 
+        if (empty($emploi)){
+            $emploi = null;
+        }
+
         // Récupérer la ville si elle est saisie
         $nomVille = $_POST['ville'] ?? null;
 
@@ -60,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $id_ville = $ville->getIdVille($nomVille);
+            if (is_array($id_ville) && !empty($id_ville)) {
+                $id_ville = intval($id_ville, 10);
+            }
 
             $valuesAdresse = array(
                 'rue' => null,
@@ -81,6 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Récupérer l'identifiant de l'adresse
         $id_adresse = $adresse->getMaxIdAdresse();
+        if (is_array($id_adresse) && !empty($id_adresse)) {
+            $id_adresse = intval($id_adresse, 10);
+        }
 
         // Ajout d'un nouvel utilisateur avec le mot de passe chiffré et l'année de promotion
         $result = $utilisateur->addUtilisateur($customUserId, $nom, $prenom, $email, $password, $emploi, $idGenre, $annee_promotion, $id_adresse);
@@ -88,8 +98,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$result)
             throw new Exception('Erreur lors de l\'inscription.');
         else {
-            $_SESSION['user_id'] = $customUserId;
-            $_SESSION['user_email'] = $email;
             header('Location : '.PAGES_PATH.'/login.php');
             exit();
         }
@@ -106,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/connection.css">
     <script src="../script/js/register.js"></script>
-    <title>Inscription - Cercle des Informaticiens Dispersés</title>
+    <title><?php echo "Inscription | ".NAME_SITE ?></title>
 </head>
 <body>
     <!-- Page d'inscription -->

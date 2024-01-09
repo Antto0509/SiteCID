@@ -1,15 +1,23 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 include_once('../parametres/configurations.php');
 
 // Vérifier si l'utilisateur est connecté en vérifiant la présence de variables de session
-if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+if (empty($_SESSION['user_id'])) {
     // Rediriger vers la page de connexion s'il n'est pas connecté
-    header('Location: http://176.223.137.210/SiteCID/src/pages/login.php');
+    header('Location: '.PAGES_PATH.':/login.php');
     exit();
 }
 
+$utilisateur = new Utilisateur();
+
 // Récupérer le nom d'utilisateur à partir des paramètres de la requête
-$id_utilisateur = $_GET['user_id'];
+$id_utilisateur = $_GET['id'];
+$email_utilisateur = $_SESSION['user_email'];
+
+$utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $email_utilisateur);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +25,7 @@ $id_utilisateur = $_GET['user_id'];
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title><?php echo $utilisateurData['prenom_utilisateur']." ".$utilisateurData['nom_utilisateur']." | ".NAME_SITE ?></title>
         <link rel="stylesheet" href="../css/infoUser.css">
     </head>
     <body>
@@ -43,25 +51,31 @@ $id_utilisateur = $_GET['user_id'];
                 </select>
 
                 <label for="nom_utilisateur">Nom:</label>
-                <input type="text" id="nom_utilisateur" name="nom_utilisateur" value=<?php //echo $utilisateurData['nom_utilisateur'] ?>>
+                <input type="text" id="nom_utilisateur" name="nom_utilisateur" value=<?php echo $utilisateurData['nom_utilisateur'] ?>>
 
                 <label for="prenom_utilisateur">Prénom:</label>
-                <input type="text" id="prenom_utilisateur" name="prenom_utilisateur">
+                <input type="text" id="prenom_utilisateur" name="prenom_utilisateur" value=<?php echo $utilisateurData['prenom_utilisateur'] ?>>
 
                 <label for="dateNaissance_utilisateur">Date de naissance:</label>
-                <input type="date" id="dateNaissance_utilisateur" name="dateNaissance_utilisateur">
+                <input type="date" id="dateNaissance_utilisateur" name="dateNaissance_utilisateur" value=<?php echo $utilisateurData['date_naissance_utilisateur'] ? $utilisateurData['date_naissance_utilisateur'] : "" ?>>
 
                 <label for="email_utilisateur">Adresse mail:</label>
-                <input type="email" id="email_utilisateur" name="email_utilisateur">
+                <input type="email" id="email_utilisateur" name="email_utilisateur" value=<?php echo $utilisateurData['email_utilisateur'] ?>>
 
                 <label for="anneePromotion_utilisateur">Année de promotion:</label>
-                <input type="number" id="anneePromotion_utilisateur" name="anneePromotion_utilisateur">
+                <input type="number" id="anneePromotion_utilisateur" name="anneePromotion_utilisateur" value=<?php ?>>
 
-                <label for="emploi_utilisateur">Emploi (facultatif):</label>
-                <input type="text" id="emploi_utilisateur" name="emploi_utilisateur">
+                <label for="emploi_utilisateur">Emploi :</label>
+                <input type="text" id="emploi_utilisateur" name="emploi_utilisateur" value=<?php echo $utilisateurData['emploi_utilisateur'] ? $utilisateurData['emploi_utilisateur'] : "" ?>>
 
-                <label for="ville_utilisateur">Ville de résidence (facultatif):</label>
-                <input type="text" id="ville_utilisateur" name="ville_utilisateur">
+                <label for="rue_utilisateur">Rue de résidence :</label>
+                <input type="text" id="ville_utilisateur" name="rue_utilisateur" value=<?php ?>>
+
+                <label for="ville_utilisateur">Ville de résidence :</label>
+                <input type="text" id="ville_utilisateur" name="ville_utilisateur" value=<?php ?>>
+
+                <label for="pays_utilisateur">Pays de résidence :</label>
+                <input type="text" id="pays_utilisateur" name="pays_utilisateur" value=<?php ?>>
 
                 <button type="button">Modifier</button>
             </form>

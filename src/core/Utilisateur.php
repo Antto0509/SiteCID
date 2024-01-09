@@ -29,11 +29,11 @@ class Utilisateur {
 
     function updatePasswordUtilisateur($idUser, $passwordUser, $newPassword): ?bool
     {
-        $publicKey = openssl_pkey_get_public($_SESSION['public_key']);
+        $chiffrement = new RSA('../parametres/public.pem', '../parametres/private.pem');
 
         // Utilise la fonction d'encryptPassword pour chiffrer les mots de passe
-        $passwordUser = encrypt($passwordUser, $publicKey);
-        $newPassword = encrypt($newPassword, $publicKey);
+        $passwordUser = $chiffrement->encrypt($passwordUser);
+        $newPassword = $chiffrement->encrypt($newPassword);
 
         // Compare les mots de passe chiffrés
         $dataUser = $this->getPasswordUtilisateur($idUser);
@@ -48,11 +48,6 @@ class Utilisateur {
         } else {
             return false;
         }
-    }
-
-    function getNumberOfUsers() {
-        $result = get_result("SELECT COUNT(*) as count FROM Utilisateur");
-        return $result['count'];
     }
 
     /**
@@ -70,15 +65,12 @@ class Utilisateur {
     }
 
 
-    function addUtilisateur($customUserId, $nom, $prenom, $email, $password, $emploi, $genre, $promotion, $adresse): ?bool
+    function addUtilisateur($customUserId, $nom, $prenom, $email, $password, $emploi, $genre, $promotion, $idAdresse): ?bool
     {
-        $publicKey = openssl_pkey_get_public($_SESSION['public_key']);
+        $chiffrement = new RSA('../parametres/public.pem', '../parametres/private.pem');
 
-        // Utilisation de la fonction d'encryptEmail pour chiffrer l'adresse mail
-        $encryptedEmail = encrypt($email, $publicKey);
-
-        // Utilisation de la fonction d'encryptPassword pour chiffrer le mot de passe
-        $encryptedPassword = encrypt($password, $publicKey);
+        // Utilisation de la fonction encrypt pour chiffrer le mot de passe
+        $encryptedPassword = $chiffrement->encrypt($password);
 
         // Détermine l'id_genre en fonction de la civilité
         $idGenre = ($genre === 'monsieur') ? 1 : 2; // 1 pour Homme, 2 pour Femme
@@ -89,13 +81,13 @@ class Utilisateur {
             "id_utilisateur" => $customUserId,
             "nom_utilisateur" => $nom,
             "prenom_utilisateur" => $prenom,
-            "email_utilisateur" => $encryptedEmail,
+            "email_utilisateur" => $email,
             "mdp_utilisateur" => $encryptedPassword,
             "num_tel_utilisateur" => null,
             "date_naissance_utilisateur" => null,
             "emploi_utilisateur" => $emploi,
             "url_photo_utilisateur" => null,
-            "id_adresse" => $adresse,
+            "id_adresse" => $idAdresse,
             "id_genre" => $idGenre,
             "id_promotion" => $idPromotion,
             "id_role" => 2, // 1 pour Administrateur, 2 pour Utilisateur
@@ -104,29 +96,4 @@ class Utilisateur {
 
         return set_insert("Utilisateur", $values, 1);
     }
-
-    function log_account(): void
-    {
-        if(!isset($_SESSION['idUser']) || $_SESSION['idUser'] == ""){
-            $_SESSION['page_call'] = "https://".$_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];
-            header("Location: ".PAGES_PATH."/login.php");
-            exit();
-        }
-    }
-
-    function getIdUtilisateur($where){
-        return get_result("SELECT id_utilisateur FROM Utilisateur".$where);
-    }
-
-    function getUtilisateur($where){
-        return get_result("SELECT * FROM Utilisateur WHERE ".$where);
-    }
-
-    function getLstUtilisateur($where = null): false|array
-    {
-        $request = "SELECT * FROM Utilisateur ";
-        if($where) $request .= "WHERE ".$where;
-        return get_results($request);
-    }
 }
-?>

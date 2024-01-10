@@ -28,9 +28,8 @@ class Adresse
         return get_result("SELECT id_adresse FROM Adresse".$where);
     }
 
-    function getAdresse($where){
-        // Mettez à jour la table à partir de laquelle vous obtenez l'adresse
-        $request = "SELECT * FROM Adresse WHERE ".$where;
+    function getAdresse($id){
+        $request = "SELECT * FROM Adresse WHERE id_adresse='".$id."'";
         return get_result($request);
     }
 

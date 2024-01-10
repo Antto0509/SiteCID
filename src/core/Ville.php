@@ -27,9 +27,9 @@ class Ville
         return get_result("SELECT id_ville FROM Ville WHERE nom_ville = '".$nomVille."'");
     }
 
-    public function getVille($where)
+    public function getVille($id)
     {
-        return get_result("SELECT * FROM Ville WHERE ".$where);
+        return get_result("SELECT * FROM Ville WHERE id_ville='".$id."'");
     }
 
     public function getLstVille($where = null): false|array

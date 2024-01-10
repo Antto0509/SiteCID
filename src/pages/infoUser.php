@@ -7,17 +7,43 @@ include_once('../parametres/configurations.php');
 // Vérifier si l'utilisateur est connecté en vérifiant la présence de variables de session
 if (empty($_SESSION['user_id'])) {
     // Rediriger vers la page de connexion s'il n'est pas connecté
-    header('Location: '.PAGES_PATH.':/login.php');
+    header('Location: '.PAGES_PATH.'/login.php');
     exit();
 }
 
+// Instanciation de nouveaux objets
 $utilisateur = new Utilisateur();
+$adresse = new Adresse();
+$ville = new Ville();
+$pays = new Pays();
+$promotion = new Promotion();
 
-// Récupérer le nom d'utilisateur à partir des paramètres de la requête
+// Récupérer le nom d'utilisateur à partir des paramètres de la requête (url)
 $id_utilisateur = $_GET['id'];
-$email_utilisateur = $_SESSION['user_email'];
 
-$utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $email_utilisateur);
+// Récupérer les données de la table Utilisateur
+$utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $_SESSION['user_email']);
+
+// Récupérer les données de la table Adresse
+$adresseData = $adresse->getAdresse($utilisateurData['id_adresse']);
+
+$villeData = null;
+$paysData = null;
+
+// Vérifier si l'ID de la ville est présent dans la table Adresse
+if ($adresseData['id_ville'] !== null) {
+    // Récupérer les données de la table Ville
+    $villeData = $ville->getVille($adresseData['id_ville']);
+}
+
+// Vérifier si l'ID du pays est présent dans la table Adresse
+if ($adresseData['id_pays'] !== null) {
+    // Récupérer les données de la table Pays
+    $paysData = $pays->getPays($adresseData['id_pays']);
+}
+
+// Récupérer les données de la table Promotion
+$promotionData = $promotion->getPromotion($utilisateurData['id_promotion']);
 ?>
 
 <!DOCTYPE html>
@@ -60,22 +86,22 @@ $utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $email_util
                 <input type="date" id="dateNaissance_utilisateur" name="dateNaissance_utilisateur" value=<?php echo $utilisateurData['date_naissance_utilisateur'] ? $utilisateurData['date_naissance_utilisateur'] : "" ?>>
 
                 <label for="email_utilisateur">Adresse mail:</label>
-                <input type="email" id="email_utilisateur" name="email_utilisateur" value=<?php echo $utilisateurData['email_utilisateur'] ?>>
+                <input type="email" id="email_utilisateur" name="email_utilisateur" value=<?php echo $_SESSION['user_email'] ?>>
 
                 <label for="anneePromotion_utilisateur">Année de promotion:</label>
-                <input type="number" id="anneePromotion_utilisateur" name="anneePromotion_utilisateur" value=<?php ?>>
+                <input type="number" id="anneePromotion_utilisateur" name="anneePromotion_utilisateur" value=<?php echo $promotionData['annee_promotion']; ?>>
 
                 <label for="emploi_utilisateur">Emploi :</label>
                 <input type="text" id="emploi_utilisateur" name="emploi_utilisateur" value=<?php echo $utilisateurData['emploi_utilisateur'] ? $utilisateurData['emploi_utilisateur'] : "" ?>>
 
                 <label for="rue_utilisateur">Rue de résidence :</label>
-                <input type="text" id="ville_utilisateur" name="rue_utilisateur" value=<?php ?>>
+                <input type="text" id="rue_utilisateur" name="rue_utilisateur" value=<?php echo $adresseData['rue'] ? $adresseData['rue'] : "" ?>>
 
                 <label for="ville_utilisateur">Ville de résidence :</label>
-                <input type="text" id="ville_utilisateur" name="ville_utilisateur" value=<?php ?>>
+                <input type="text" id="ville_utilisateur" name="ville_utilisateur" value=<?php echo $villeData['nom_ville'] ?? "" ?>>
 
                 <label for="pays_utilisateur">Pays de résidence :</label>
-                <input type="text" id="pays_utilisateur" name="pays_utilisateur" value=<?php ?>>
+                <input type="text" id="pays_utilisateur" name="pays_utilisateur" value=<?php echo $paysData['nom_pays'] ?? "" ?>>
 
                 <button type="button">Modifier</button>
             </form>
@@ -108,6 +134,6 @@ $utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $email_util
         </section>
     </main>
     <?php include "../includes/footer.php"?>
-    <script src="<?php echo SCRIPT_PATH; ?>/js/infoUser.js"></script>
+    <script src="<?php echo SCRIPT_PATH.'/js/infoUser.js'?>"></script>
     </body>
 </html>

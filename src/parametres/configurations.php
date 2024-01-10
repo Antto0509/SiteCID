@@ -12,6 +12,8 @@ const SCRIPT_PATH = URLSITEWEB . '/script';
 include('../core/Utilisateur.php');
 include('../core/Adresse.php');
 include('../core/Ville.php');
+include('../core/Pays.php');
+include('../core/Promotion.php');
 include('../core/RSA.php');
 
 date_default_timezone_set('Europe/Paris');

@@ -8,13 +8,44 @@ const ASSETS_PATH =  URLSITEWEB . '/assets';
 const IMGS_PATH = ASSETS_PATH . '/imgs';
 const PAGES_PATH = URLSITEWEB . '/pages';
 const SCRIPT_PATH = URLSITEWEB . '/script';
+const ADMIN_PATH = URLSITEWEB . '/admin/admin.php';
 
-include('../core/Utilisateur.php');
-include('../core/Adresse.php');
-include('../core/Ville.php');
-include('../core/Pays.php');
-include('../core/Promotion.php');
-include('../core/RSA.php');
+// protocole utilisé : http ou https ?
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') $url = "https://"; else $url = "http://";
+// hôte (nom de domaine voire adresse IP)
+$url .= $_SERVER['HTTP_HOST'];
+// emplacement de la ressource (nom de la page affichée)
+$url .= $_SERVER['REQUEST_URI'];
+
+if ($url == URLSITEWEB || $url == URLSITEWEB.'/index.php'){
+    include('core/Utilisateur.php');
+    include('core/Adresse.php');
+    include('core/Ville.php');
+    include('core/Pays.php');
+    include('core/Promotion.php');
+    include('core/Evenement.php');
+    include('core/Photos.php');
+    include('core/RSA.php');
+} else if ($url == PAGES_PATH.'/login.php' || $url == PAGES_PATH.'/register.php' || $url == PAGES_PATH.'/infoUser.php' ||$url == ADMIN_PATH) {
+    include('../core/Utilisateur.php');
+    include('../core/Adresse.php');
+    include('../core/Ville.php');
+    include('../core/Pays.php');
+    include('../core/Promotion.php');
+    include('../core/Evenement.php');
+    include('../core/Photos.php');
+    include('../core/RSA.php');
+} else {
+    include('../../core/Utilisateur.php');
+    include('../../core/Adresse.php');
+    include('../../core/Ville.php');
+    include('../../core/Pays.php');
+    include('../../core/Promotion.php');
+    include('../../core/Evenement.php');
+    include('../../core/Photos.php');
+    include('../../core/RSA.php');
+}
+
 
 date_default_timezone_set('Europe/Paris');
 

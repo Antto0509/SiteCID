@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 include_once('parametres/configurations.php');
 
 // Récupérer le nom d'utilisateur à partir des paramètres de la requête

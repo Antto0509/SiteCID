@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Vérification des informations d'authentification
         $utilisateurData = $utilisateur->login($email);
 
-        if ($utilisateurData && $dechiffrement->verify($password, $utilisateurData['mdp_utilisateur'])) {
+        if ($utilisateurData['id_role'] == 2 && $dechiffrement->verify($password, $utilisateurData['mdp_utilisateur'])) {
             // Stocker des informations dans la session
             $_SESSION['user_id'] = $utilisateurData['id_utilisateur'];
             $_SESSION['user_email'] = $utilisateurData['email_utilisateur'];
@@ -26,6 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Rediriger vers la page personnelle de l'utilisateur
             header('Location: ' . $redirectUrl);
             exit();
+        } else if ($utilisateurData['id_role'] == 1 && $dechiffrement->verify($password, $utilisateurData['mdp_utilisateur'])) {
+            // Stocker des informations dans la session
+            $_SESSION['user_id'] = $utilisateurData['id_utilisateur'];
+            $_SESSION['user_email'] = $utilisateurData['email_utilisateur'];
+
+            // Rediriger vers la page administrateur
+            header('Location: '.ADMIN_PATH);
         } else {
             throw new Exception('Identifiant ou mot de passe incorrect.');
         }

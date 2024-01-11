@@ -1,0 +1,15 @@
+body {
+    background-color: #ffffff;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+/* Ajoutez ici d'autres styles spécifiques aux pages */

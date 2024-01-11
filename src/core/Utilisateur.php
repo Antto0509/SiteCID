@@ -96,4 +96,9 @@ class Utilisateur {
 
         return set_insert("Utilisateur", $values, 1);
     }
+
+    function getListeUtilisateurs(): false|array
+    {
+        return get_results("SELECT * FROM Utilisateur ORDER BY nom_utilisateur, prenom_utilisateur");
+    }
 }

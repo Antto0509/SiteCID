@@ -1,0 +1,40 @@
+body {
+    background-color: #EEEEEE;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    color: #053B50;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+section {
+    background-color: #EEEEEE;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 30%;
+    margin-bottom: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+section:hover {
+    background-color: #64CCC5;
+}
+
+@media screen and (max-width: 720px){
+    section {
+        width: 100%;
+    }
+}

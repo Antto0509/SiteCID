@@ -1,0 +1,76 @@
+/* Footer */
+
+@font-face {
+    font-family: 'Glacial Indifference Regular';
+    src: url('assets/police/glacial-indifference/GlacialIndifference-Regular.otf') format('truetype');
+}
+
+* {
+    font-family: 'Glacial Indifference Regular', Arial, sans-serif;
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #EEEEEE;
+    margin: 15px;
+    line-height: 0.70cm;
+    transition: all 0.3s;
+}
+
+footer a:hover {
+    color: #176B87;
+}
+
+footer {
+    background-color: #053B50;
+    color : #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    height: auto;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+.col1-foot {
+    height: auto;
+    width: 750px;
+    padding: 20px;
+}
+
+.col2-foot {
+    height: auto;
+    width: 750px;
+    padding: 20px;
+}
+
+.contact-foot {
+    margin: 15px;
+    line-height: 0.8cm;
+}
+
+.img-tel-foot {
+    height: 40px;
+    width: 40px;
+}
+
+.img-mail-foot {
+    height: 40px;
+    width: 60px;
+}
+
+.contact-foot a img {
+    height: 40px;
+    width: 40px;
+}
+
+.texte {
+    margin: 15px;
+    line-height: 0.70cm;
+    text-align: justify;
+}

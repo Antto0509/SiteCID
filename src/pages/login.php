@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_email'] = $utilisateurData['email_utilisateur'];
 
             // Construire l'URL de redirection vers la page personnelle de l'utilisateur
-            $redirectUrl = 'http://176.223.137.210/SiteCID/src/pages/infoUser.php?id=' . $utilisateurData['id_utilisateur'];
+            $redirectUrl = PAGES_PATH.'/infoUser.php?id=' . $utilisateurData['id_utilisateur'];
 
             // Rediriger vers la page personnelle de l'utilisateur
             header('Location: ' . $redirectUrl);

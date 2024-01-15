@@ -26,7 +26,7 @@ if ($url == URLSITEWEB || $url == URLSITEWEB.'/index.php'){
     include('core/Evenement.php');
     include('core/Photos.php');
     include('core/RSA.php');
-} else if ($url == PAGES_PATH.'/login.php' || $url == PAGES_PATH.'/register.php' || $url == PAGES_PATH.'/infoUser.php' ||$url == ADMIN_PATH) {
+} else if ($url == PAGES_PATH.'/login.php' || $url == PAGES_PATH.'/register.php' || $url == PAGES_PATH.'/infoUser.php?id=' . $_GET['id'] || $url == ADMIN_PATH) {
     include('../core/Utilisateur.php');
     include('../core/Adresse.php');
     include('../core/Ville.php');

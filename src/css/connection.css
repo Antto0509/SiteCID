@@ -1,4 +1,8 @@
 
+body {
+    background-color: #eee;
+}
+
 /* conteneur de connexion */
 .conteneur-connexion {
     max-width: 400px;
@@ -23,10 +27,6 @@
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.saisie-infos-connexion .error-message {
-    color: red;
 }
 
 /* groupe des civilités */
@@ -54,8 +54,7 @@
 }
 
 /* entrée du formulaire */
-.saisie-infos-connexion form input,
-.saisie-infos-connexion form select {
+.saisie-infos-connexion form input {
     width: calc(100% - 16px); 
     padding: 10px;
     margin-bottom: 16px;

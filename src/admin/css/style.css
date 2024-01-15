@@ -1,16 +1,19 @@
+
 body {
     background-color: #EEEEEE;
 }
 
-h1 {
+.titre-administration {
+    color: #053B50;
+    padding: 30px;
     text-align: center;
 }
 
-h2 {
+.menu-administration {
     color: #053B50;
 }
 
-main {
+#menu-administration {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +22,7 @@ main {
     padding: 20px;
 }
 
-section {
+#menu-administration section {
     background-color: #EEEEEE;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -29,12 +32,20 @@ section {
     text-align: center;
 }
 
-section:hover {
+ #menu-administration section:hover {
     background-color: #64CCC5;
 }
 
+#menu-administration a {
+    text-decoration: none;
+    color: #053B50;
+    margin: 15px;
+    line-height: 0.70cm;
+    transition: all 0.3s;
+}
+
 @media screen and (max-width: 720px){
-    section {
-        width: 100%;
+    #menu-administration section {
+        width: 80%;
     }
 }

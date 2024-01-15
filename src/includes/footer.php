@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="<?php echo URLSITEWEB; ?>/css/style.css">
+<link rel="stylesheet" href="<?php echo URLSITEWEB; ?>/css/footer.css">
 
 <footer>
     <div class="col1-foot">
@@ -24,7 +24,7 @@
     </div>
     <div class="col2-foot">
         <h3 class="intitule-info">Informations :</h3>
-        <p class="texte">Objet : Association des anciens étudiants de l'IUT Informatique d'Amiens</p>
+        <p class="texte">Objet : Cercle des Informaticiens Dispersés</p>
         <p class="texte">Siège : Avenue des Facultés, Le Bailly, 80025 Amiens</p>
         <p class="texte">Date de création : 04/07/1995</p>
         <a href="">A propos</a>

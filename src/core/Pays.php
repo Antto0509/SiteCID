@@ -22,10 +22,8 @@ class Pays
         return get_result($request);
     }
 
-    function getLstPays($where = null): false|array
+    function getLstPays(): false|array
     {
-        $request = "SELECT * FROM Pays ";
-        if($where) $request .= " WHERE ".$where;
-        return get_results($request);
+        return get_results("SELECT * FROM Evenement ORDER BY id_pays");
     }
 }

@@ -1,15 +1,154 @@
+a {
+    text-decoration: none;
+    color: #053B50;
+    margin: 15px;
+    line-height: 0.70cm;
+    transition: all 0.3s;
+}
+
+a:hover {
+    color: #64CCC5;
+}
+
 body {
     background-color: #ffffff;
 }
 
+.btn-modifier,
+.btn-retour{
+    display: inline-block;
+    padding: 0.5em 1.7em;
+    margin: 0 0.1em 0.1em 0;
+    border: #053B50;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: #64CCC5;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.btn-modifier:hover,
+.btn-retour:hover {
+    color: #EEEEEE;
+    background-color: #176B87;
+}
+
+.btn-supprimer {
+    display: inline-block;
+    padding: 0.5em 1.7em;
+    margin: 0 0.1em 0.1em 0;
+    border: #053B50;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: red;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.btn-supprimer:hover {
+    background-color: darkred;
+}
+
+.btn-retour {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-retour a{
+    text-decoration: none;
+    color: #ffffff;
+    margin: 15px;
+    line-height: 0.70cm;
+    transition: all 0.3s;
+}
+
 main {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
-    color: #007bff;
+    color: #053B50;
+    padding: 30px;
 }
 
-/* Ajoutez ici d'autres styles spécifiques aux pages */
+h2 {
+    color: #053B50;
+    margin-left: 35px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.table-gestion {
+    margin-bottom: 20px;
+    width: 90%;
+    border: solid #053B50;
+    border-collapse: collapse;
+    color: #053B50;
+}
+
+.table-gestion th,
+.table-gestion td {
+    padding: 5px;
+    border: solid #053B50;
+    text-align: center;
+}
+
+/* Page de modification d'informations utilisateur : */
+
+.titre-modification-utilisateur{
+    text-align: center;
+}
+
+.formulaire-modification-utilisateur{
+    background-color: rgb(252, 252, 255);
+    border: 3px solid #053B50;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 20px 40px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.formulaire-modification-utilisateur input:focus {
+    outline: none;
+}
+
+/* Suppression de la bordure bleue automatique au clic sur un champ */
+.formulaire-modification-utilisateur input,
+.formulaire-modification-utilisateur select{
+    border: 2px solid #053B50;
+    border-radius: 3px;
+    display: block;
+    padding: 3px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.formulaire-modification-utilisateur label{
+
+}
+
+.bouton-modifier {
+    background-color: rgb(240,60,60);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.bouton-modifier:hover {
+    background-color: rgb(200,0,0);
+}

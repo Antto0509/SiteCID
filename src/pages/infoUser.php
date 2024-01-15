@@ -18,11 +18,17 @@ $ville = new Ville();
 $pays = new Pays();
 $promotion = new Promotion();
 
-// Récupérer le nom d'utilisateur à partir des paramètres de la requête (url)
-$id_utilisateur = $_GET['id'];
+// Vérifier si un ID d'utilisateur est passé dans l'URL
+if (isset($_GET['id'])) {
+    $id_utilisateur = $_GET['id'];
+} else {
+    // Si aucun ID n'est spécifié, rediriger vers une page par défaut ou afficher un message d'erreur.
+    header('Location: '.PAGES_PATH.'login.php');
+    exit();
+}
 
 // Récupérer les données de la table Utilisateur
-$utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur, $_SESSION['user_email']);
+$utilisateurData = $utilisateur->getDataUtilisateur($id_utilisateur);
 
 // Récupérer les données de la table Adresse
 $adresseData = $adresse->getAdresse($utilisateurData['id_adresse']);
@@ -59,7 +65,6 @@ $promotionData = $promotion->getPromotion($utilisateurData['id_promotion']);
     <?php include "../includes/header.php"?>
     <header class="entete-banniere">
         <img src="../assets/imgs/iut-amiens.png" alt="Bannière" class="banniere">
-        <!-- Ajout de la classe "photo-profil-trigger" pour faciliter la sélection en JavaScript -->
         <img src="../assets/imgs/photo-profil.png" alt="Photo de profil" class="photo-profil">
         <input type="file" id="input-photo-profil" style="display: none;">
     </header>
@@ -86,7 +91,7 @@ $promotionData = $promotion->getPromotion($utilisateurData['id_promotion']);
                 <input type="date" id="dateNaissance_utilisateur" name="dateNaissance_utilisateur" value=<?php echo $utilisateurData['date_naissance_utilisateur'] ? $utilisateurData['date_naissance_utilisateur'] : "" ?>>
 
                 <label for="email_utilisateur">Adresse mail:</label>
-                <input type="email" id="email_utilisateur" name="email_utilisateur" value=<?php echo $_SESSION['user_email'] ?>>
+                <input type="email" id="email_utilisateur" name="email_utilisateur" value=<?php echo $utilisateurData['email_utilisateur']; ?>>
 
                 <label for="anneePromotion_utilisateur">Année de promotion:</label>
                 <input type="number" id="anneePromotion_utilisateur" name="anneePromotion_utilisateur" value=<?php echo $promotionData['annee_promotion']; ?>>
@@ -107,7 +112,7 @@ $promotionData = $promotion->getPromotion($utilisateurData['id_promotion']);
             </form>
         </section>
 
-        <!-- Boite permettant à l'utilisateur de poster un évènement -->
+        <!-- Boite permettant à l'utilisateur de poster un évènement ou une photo -->
         <section class="conteneur-poster-annonce">
             <h2>Créer et publier un événement</h2>
             <form>
@@ -131,8 +136,18 @@ $promotionData = $promotion->getPromotion($utilisateurData['id_promotion']);
 
                 <button type="button">Publier</button>
             </form>
+
+            <h2>Publier une photo</h2>
+            <form>
+
+
+                <button type="button">Publier</button>
+            </form>
         </section>
     </main>
+
+    <a href="logout.php" class="logout">Déconnexion</a>
+
     <?php include "../includes/footer.php"?>
     <script src="<?php echo SCRIPT_PATH.'/js/infoUser.js'?>"></script>
     </body>

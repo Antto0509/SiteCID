@@ -1,12 +1,11 @@
 <?php
-include_once('parametres/configurations.php');
+include('parametres/configurations.php');
 
-// Récupérer le nom d'utilisateur à partir des paramètres de la requête
-$id_utilisateur = $_GET['user_id'];
+$redirectUrl = PAGES_PATH . '/login.php';
 
-// Requête SQL pour récupérer les événements triés par date décroissante
-$sql = "SELECT * FROM Evenement ORDER BY date_evenement DESC";
-$evenements = get_results($sql);
+if ($_SESSION['user_id'] !== null) {
+    $redirectUrl = PAGES_PATH . '/infoUser.php?id=' . $_SESSION['user_id'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +14,9 @@ $evenements = get_results($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title><?php echo "Accueil | ".NAME_SITE ?></title>
+    <title>Accueil | <?php echo NAME_SITE ?></title>
 </head>
-<body>
+<body class="body-index">
     <?php include "includes/header.php";?>
 
     <h1>Présentation</h1>
@@ -40,27 +39,11 @@ $evenements = get_results($sql);
         </div>
     </div>
 
-    <h1>Annonces des événements</h1>
+    <h1>Annonces des étudiants</h1>
     <div class="event-card">
-        <?php
-        // Vérifier s'il y a des événements
-        if (count($evenements) > 0) {
-            foreach ($evenements as $evenement) {
-                // Afficher les détails de chaque événement
-                echo "<h2>" . htmlspecialchars($evenement['titre_evenement']) . "</h2>";
-                echo "<p>" . htmlspecialchars($evenement['description_evenement']) . "</p>";
-                echo "<p>Date : " . htmlspecialchars($evenement['date_evenement']) . "</p>";
-                echo "<p>Adresse : " . htmlspecialchars($evenement['adresse_evenement']) . "</p>";
-                // ... Ajoutez d'autres détails d'événement selon nos besoins
-            }
-        } else {
-            // Aucun événement trouvé
-            echo "<h2>Aucun événement pour le moment</h2>";
-            echo "<p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>";
-            $userUrl = 'http://176.223.137.210/SiteCID/src/pages/infoUser.php?id=' . $id_utilisateur;
-            echo "<a href='".$userUrl."'><button>Ajouter un événement</button></a>";
-        }
-        ?>
+        <h2>Aucun événement pour le moment</h2>
+        <p>Vous pouvez ajouter un événement en cliquant sur le bouton ci-dessous :</p>
+        <a href="<?php echo $redirectUrl ?>"><button>Ajouter un événement</button></a>
     </div>
 
     <?php include "includes/footer.php";?>

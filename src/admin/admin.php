@@ -8,7 +8,7 @@ include('../parametres/configurations.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Zone d'Administration</title>
+    <title>Espace administrateur <?php echo ' | '.NAME_SITE; ?></title>
 </head>
 <body>
     <?php include "../includes/header.php"; ?>
@@ -17,22 +17,19 @@ include('../parametres/configurations.php');
 
     <main>
         <section id="compte">
-            <a href=""><h2>Mon compte</h2></a>
+            <a href="<?php echo PAGES_PATH. '/infoUser.php?id=' . $_SESSION['user_id'] ?>"><h2>Mon compte</h2></a>
         </section>
 
         <section id="gestion-etudiants">
             <a href="pages/users.php"><h2>Gestion des utilisateurs</h2></a>
-            <!-- Contenu pour la gestion des étudiants -->
         </section>
 
         <section id="gestion-photos">
             <a href="pages/pictures.php"><h2>Gestion des photos</h2></a>
-            <!-- Contenu pour la gestion des photos -->
         </section>
 
         <section id="gestion-evenements">
             <a href="pages/events.php"><h2>Gestion des événements</h2></a>
-            <!-- Contenu pour la gestion des événements -->
         </section>
     </main>
 

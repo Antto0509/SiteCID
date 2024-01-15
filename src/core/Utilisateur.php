@@ -14,13 +14,18 @@ class Utilisateur {
         return ($result['COUNT(*)'] > 0);
     }
 
-    function getDataUtilisateur($idUser, $emailUser){
-        return get_result("SELECT * FROM Utilisateur WHERE id_utilisateur = '".$idUser."' AND email_utilisateur = '".$emailUser."'");
+    function getDataUtilisateur($idUser){
+        return get_result("SELECT * FROM Utilisateur WHERE id_utilisateur = '".$idUser."'");
     }
 
-    function updateDataUtilisateur($idUser, $dataUser): ?bool
+    function setUpdateUtilisateur($idUser, $dataUser): ?bool
     {
         return set_update("Utilisateur", $dataUser, "id_utilisateur = '".$idUser."'", true);
+    }
+
+    function setDeleteUtilisateur($id): ?bool
+    {
+        return set_delete("Evenement", "id_evenement='".$id."'", 1);
     }
 
     function getPasswordUtilisateur($idUser){

@@ -13,9 +13,9 @@ include('../parametres/configurations.php');
 <body>
     <?php include "../includes/header.php"; ?>
 
-    <h1>Espace administrateur</h1>
+    <h1 class="titre-administration">Espace administrateur</h1>
 
-    <main>
+    <main id="menu-administration">
         <section id="compte">
             <a href="<?php echo PAGES_PATH. '/infoUser.php?id=' . $_SESSION['user_id'] ?>"><h2>Mon compte</h2></a>
         </section>
